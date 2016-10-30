@@ -25,6 +25,10 @@
 /* Begin PBXFileReference section */
 		D24681721DC4D1BB004D288D /* assignment-one */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "assignment-one"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D24681751DC4D1BB004D288D /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		D24681811DC6455B004D288D /* tests1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tests1.txt; sourceTree = "<group>"; };
+		D24681821DC65C79004D288D /* tests2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tests2.txt; sourceTree = "<group>"; };
+		D24681831DC65C89004D288D /* tests3.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tests3.txt; sourceTree = "<group>"; };
+		D24681841DC69B47004D288D /* tests4.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tests4.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,10 @@
 			isa = PBXGroup;
 			children = (
 				D24681751DC4D1BB004D288D /* main.cpp */,
+				D24681811DC6455B004D288D /* tests1.txt */,
+				D24681821DC65C79004D288D /* tests2.txt */,
+				D24681831DC65C89004D288D /* tests3.txt */,
+				D24681841DC69B47004D288D /* tests4.txt */,
 			);
 			path = "assignment-one";
 			sourceTree = "<group>";
