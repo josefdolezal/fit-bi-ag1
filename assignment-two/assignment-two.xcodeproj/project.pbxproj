@@ -25,6 +25,14 @@
 /* Begin PBXFileReference section */
 		D203DE891DE0533F000DEAA0 /* assignment-two */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "assignment-two"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D203DE8C1DE0533F000DEAA0 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		D203DE951DE1ACD7000DEAA0 /* t1 */ = {isa = PBXFileReference; lastKnownFileType = text; path = t1; sourceTree = "<group>"; };
+		D203DE961DE1ACD7000DEAA0 /* t2 */ = {isa = PBXFileReference; lastKnownFileType = text; path = t2; sourceTree = "<group>"; };
+		D203DE971DE1ACD7000DEAA0 /* t3 */ = {isa = PBXFileReference; lastKnownFileType = text; path = t3; sourceTree = "<group>"; };
+		D203DE981DE1ACD7000DEAA0 /* t4 */ = {isa = PBXFileReference; lastKnownFileType = text; path = t4; sourceTree = "<group>"; };
+		D203DE9A1DE1CD77000DEAA0 /* t5 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = t5; sourceTree = "<group>"; };
+		D203DE9C1DE1D44E000DEAA0 /* generator.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = generator.py; sourceTree = "<group>"; };
+		D203DE9D1DE1D52F000DEAA0 /* t6 */ = {isa = PBXFileReference; lastKnownFileType = text; path = t6; sourceTree = "<group>"; };
+		D203DE9E1DE1D52F000DEAA0 /* t7 */ = {isa = PBXFileReference; lastKnownFileType = text; path = t7; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,9 +65,33 @@
 		D203DE8B1DE0533F000DEAA0 /* assignment-two */ = {
 			isa = PBXGroup;
 			children = (
+				D203DE9B1DE1D427000DEAA0 /* generator */,
+				D203DE941DE1ACBC000DEAA0 /* sample */,
 				D203DE8C1DE0533F000DEAA0 /* main.cpp */,
 			);
 			path = "assignment-two";
+			sourceTree = "<group>";
+		};
+		D203DE941DE1ACBC000DEAA0 /* sample */ = {
+			isa = PBXGroup;
+			children = (
+				D203DE951DE1ACD7000DEAA0 /* t1 */,
+				D203DE961DE1ACD7000DEAA0 /* t2 */,
+				D203DE971DE1ACD7000DEAA0 /* t3 */,
+				D203DE981DE1ACD7000DEAA0 /* t4 */,
+				D203DE9A1DE1CD77000DEAA0 /* t5 */,
+				D203DE9D1DE1D52F000DEAA0 /* t6 */,
+				D203DE9E1DE1D52F000DEAA0 /* t7 */,
+			);
+			path = sample;
+			sourceTree = "<group>";
+		};
+		D203DE9B1DE1D427000DEAA0 /* generator */ = {
+			isa = PBXGroup;
+			children = (
+				D203DE9C1DE1D44E000DEAA0 /* generator.py */,
+			);
+			path = generator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -72,6 +104,7 @@
 				D203DE851DE0533F000DEAA0 /* Sources */,
 				D203DE861DE0533F000DEAA0 /* Frameworks */,
 				D203DE871DE0533F000DEAA0 /* CopyFiles */,
+				D203DE931DE1A18B000DEAA0 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -114,6 +147,22 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D203DE931DE1A18B000DEAA0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "echo \"${SRCROOT}\"";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D203DE851DE0533F000DEAA0 /* Sources */ = {
