@@ -138,8 +138,16 @@ public:
         animal->left->right = animal->right;
         if(animal->right != NULL) animal->right->left = animal->left;
 
+        Herd h(strategy);
+
+        h.add(animal);
+        h.removeExtrem();
+
         animal->clear();
-        // delete animal;
+        delete animal;
+
+        merge(h);
+        return;
     }
 
     void merge(Herd & other) {
