@@ -1,0 +1,119 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{a4wide}
+\title{BI-AG1 - Algoritmy a grafy 2016/17}
+\author{Josef Dolezal}
+
+\begin{document}
+
+\tableofcontents
+
+\section{Základní pojmy}
+
+  \begin{description}
+    \item[Zdroj] Uzel, do kterého nevede žádná hrana
+    \item[Úplný graf] Graf, ve kterém pro libovolné různé dva vrcholy z množiny vrcholů existuje hrana.
+    \item[úplný bipartitní graf] Graf, který lze rozdělit na dvě partity takové, že vrcholy jedné pratity nemají nemají vzájemně žádnou hranu, ale mají hranu s každým vrcholem druhé partity.
+    \item[úplný k-partitní graf] Viz. úplný bipartitní graf.
+    \item[Cesta P\textsubscript{m}] Posloupnost vrcholů s \emph{m} hranami, pro kterou platí, že v grafu existuje hrana z daného vrcholu do následníka. Vrcholy ani hrany se nesmí opakovat. Délkou cesty se rozumí počet hran.
+    \item[Stupeň vrcholu deg\textsubscript{G}(v)] Číslo označující počet hran při vrcholu \emph{v}.
+    \item[Otevřené okolí vrcholu \emph{v}] Množina všech sousedů vrcholu \emph{v}.
+    \item[Uzavřené okolí vrcholu \emph{v}] Množina všech sousedů vrcholu \emph{v} včetně vrcholu \emph{v}.
+    \item[Regulární graf] Graf je r-regulární, pokud pro všechny vrcholy platí, že mají stupeň r. Graf je regulární, pokud je r-regulární pro nějaké r.
+    \item[Izolovaný vrchol] Vrchol stupně 0.
+  \end{description}
+
+\newpage
+
+\section{Grafy}
+
+  \subsection{Vlastnosti grafů}
+    \begin{description}
+       \item[Princip sudosti] Pro každý graf platí, že součet stupňů všech vrcholů je roven dvojnásobku počtu hran. Z toho plyne, že počet vrcholů s lichého stupně sudý.
+    \end{description}
+
+  \subsection{Podgrafy}
+
+    \begin{description}
+      \item[Podgraf] Libovolná podmnožina vrcholů a hran grafu G.
+      \item[Indukovaný podgraf] Libovolná množina vrcholů grafu G a všechny hrany, které navzájem spojují vrcholy ze zvolené podmnožiny.
+      \item[Klika grafu] Takový podgraf H grafu G, že H je úplný graf. Je tedy izomorfní s nějakým úplným grafem.
+      \item[Nezávislá množina] Indukovaný podgraf, který nemá žádné hrany.
+      \item[Souvislý graf] Graf, ve kterém pro každé dva vrcholy u a v platí, že existuje cesta z u do v. V opačném případě je nesouvislý.
+      \item[Souvislá komponenta] Indukovaný podgraf H grafu G, který je souvislý a zároveň neexistuje podgraf F grafu G takový, že H je podgraf F. Tedy je největší možný souvislý podgraf.
+    \end{description}
+
+  \subsection{Souvislost grafu}
+
+    \subsubsection{DFS - Prohledávání do hloubky}
+      \begin{itemize}
+        \item Z anglickégo \emph{Depth First Search}, tedy prohledávání "nejdříve do hloubky".
+        \item Algoritmus se stále zanořuje, ostatní sousedy prochází až po vynoření.
+        \item Tento algoritmus je vhodný na vyhledávání souvlislých komponent.
+      \end{itemize}
+
+  \subsection{Orientované grafy}
+
+    \begin{description}
+      \item[Orientovaný graf] Uspořádaná dvojice \emph{(V, E)}, kde V je neprázdná konečná množina vrcholů, E je množina orientovaných hran.
+      \item[Orientovaná hrana] Uspořádaná dvojice (u, v) je dvojice různých vrcholů u,v. Vrchol u je předchůdce, v je následník.
+    \end{description}
+
+    \subsection{Stupeň vrcholu v orientovaném grafu}
+      \begin{description}
+        \item[Vstupní stupeň] Symbolem deg\textsubscript{G}\textsuperscript{+}(v) označíme počet hran grafu G, končících ve vrcholu v.
+        \item[Výstupní stupeň] Symbolem deg\textsubscript{G}\textsuperscript{-}(v) označíme počet hran grafu G, vycházejících z vrcholu v.
+        \item[Stupeň vrcholu] Jako stupeň vrcholu označíme deg\textsubscript{G}(v) = deg\textsubscript{G}\textsuperscript{+}(v) + deg\textsubscript{G}\textsuperscript{-}(v)
+      \end{description}
+
+    \subsection{Okolí stupně v orientovaném grafu}
+      \begin{description}
+        \item[Vstupní okolí] Množina všech vrcholů N\textsubscript{G}\textsuperscript{+}(v), ze kterých vede hrana do vrcholu v (množina předchůdců).
+        \item[Výstupní okolí] Množina všech vrcholů N\textsubscript{G}\textsuperscript{-}(v), do kterých vede hrana z vrcholu v (množina následníků).
+        \item[Okolí] Sjednocení N\textsubscript{G}(v)
+      \end{description}
+
+    \subsection{Zdroje, stoky, izolované vrcholy}
+      \begin{description}
+        \item[Izolovaný vrchol] Stupeň vrcholu je 0.
+        \item[Zdroj] Vstupní stupeň vrcholu je 0.
+        \item[Stok] Výstupní stupeň vrcholu je 0.
+      \end{description}
+
+    \subsection{Souvislost}
+      \begin{description}
+        \item[Symetrizace] Odstranění z grafu informace o orientaci hran.
+        \item[Slabá souvislost] Graf je slabě souvislý, pokud je souvislá jego symetrizace (souvislý po odstranění orientace hran).
+        \item[Silná souvislost] Graf je silně souvislý, pokud pro každé vrcholy u a v existuje orientované cesta z u do v a současně existuje orientovaná cesta z v do u.
+      \end{description}
+
+\section{Stromy}
+  \begin{description}
+    \item[Strom] Graf, který je souvislý a zároveň neobsahuje cyklus.
+    \item[Les] Graf, který neobsahuje žádnou kružnici (jeho jednotlivé komponenty jsou stromy).
+    \item[List] Vrchol se stupněm 1.
+  \end{description}
+
+  \subsection{Listy}
+    \begin{itemize}
+      \item Každý strom obsahující alespoň dva dva vrcholy obsahuje alespoň dva listy.
+      \item Je-li G graf o alespoň 2 vrcholech a \emph{v} je list, pak $G - v$ je také strom.
+    \end{itemize}
+
+  \subsection{Vlastnosti}
+    \begin{itemize}
+      \item Pro každé dva vrcholy existuje právě jedna cesta mezi nimi.
+      \item Strom je souvislý a vynecháním libolné hrany bude nesouvislý.
+      \item Počet vrcholů je o 1 větší než počet hran, tedy $|V| = |E| + 1$
+    \end{itemize}
+
+\section{Vzdálenost v grafech, topologické uspořádání}
+  \subsection{Kostra grafu}
+  \begin{itemize}
+    \item Podgraf souvislého grafu \emph{G}, který obsahuje všechny vrcholy původního grafu a přitom je stromem.
+    \item Nesouvislé grafy nemají kostru.
+    \item Souvislý graf s kružnicemi má více koster.
+    \item Nějakou kostru lze nalézt algoritmem DFS. Složitost nalezení je $\textrm O(|V| + |E|)$
+  \end{itemize}
+
+\end{document}
