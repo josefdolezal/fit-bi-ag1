@@ -1,0 +1,19 @@
+\section{Amortizovaná složitost}
+
+  Protože \emph{worst-case} nepopisuje vždy skutečné chování programu, udává se u algoritmů, které se volají
+  nad dynamicky se měnící strukturou tzv. amortizovaná složitost.
+
+  \begin{description}
+    \item[Amortizovaná složitost] Udává průměrnou časovou složitost pro jedné operace pro $k$ operací.
+  \end{description}
+
+  \subsection{Příklad - Binární sčítačka}
+    Uchovává bitovou reprezentaci čísla v paměťových buňkách. Sčítačka podporuje operace:
+
+    \begin{itemize}
+      \item $Inc(x)$ zvýší číslo o 1.
+      \item $Add(x,y)$ přidá číslo $y$ k číslu $x$.
+    \end{itemize}
+
+    Pomocí účetní metody lze dokázat, že složitost operací je nejvýše $\textrm O(2n)$.
+    Tedy složitost jedné je amortizovaně $\textrm O(1)$.

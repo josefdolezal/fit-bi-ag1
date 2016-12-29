@@ -1,0 +1,34 @@
+\section{Binomiální halda}
+
+  \begin{description}
+    \item[Binomiální strom řádu $k$] Uspořádaný zakořeněný strom, pro který platí:
+    \begin{itemize}
+      \item B\textsubscript{0} je tvořen pouze kořenem.
+      \item B\textsubscript{k} lze získat pomocí stromu B\textsubscript{k-1}, kterému připojíme jako nejpravějšího syna strom B\textsubscript{k}.
+    \end{itemize}
+    \item[Binomiální halda] Složení souboru binomiálních stromů. Každý strom dodržuje haldové uspořádání. V uspořádání se žádný strom se stejným řádem nevyskytuje dvakrát. Soubor je uspořádán vzestupně.
+  \end{description}
+
+  \subsection{Vlastnosti binomiálních stromů}
+    \begin{itemize}
+      \item Počet hladin stromu B\textsubscript{k} je $k+1$.
+      \item Stupeň kořene stromu B\textsubscript{k} je $k$.
+      \item Počet vrcholů stromu B\textsubscript{k} je $2^k$.
+      \item Binomiální strom s $n$ vrcholy má hloubku $log \, n$ a počet synů kořene také $log \, n$.
+    \end{itemize}
+
+    \subsection{Vlastnosti binomiální haldy}
+      \begin{itemize}
+        \item Binomiální strom B\textsubscript{k} se v souborů stromů vyskytuje tehdy, je li v dvojkovém zápisu čísla $n$ nastavený $k$-tý nejnižší bit na 1.
+        \item Halda se skládá z $log \, n$ binomiálních stromů.
+      \end{itemize}
+
+    \subsection{Sloučení hald}
+      Sloučení probíhá obdobně jako při sčítání v binární sčítačce, tedy slučuji stromy se stejným stupněm a udržuji si přenos (aby nevzniklo více stromů se stejným stupněm $k$).
+
+    \subsection{Vložení prvku}
+      Provádí se pomocí slučování hald (slučuji s jednoprvkovou haldou).
+
+    \subsection{Odstranění minima}
+      Minimum nalezneme průchedem kořenů jednotlivých stromů. Od minima odtrhneme všechny potomky (a jejich podstromy) a sloučíme je do nové haldy.
+      Tuto novou haldu sloučíme s původní.
