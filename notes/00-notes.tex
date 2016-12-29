@@ -1,0 +1,42 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{a4wide}
+\usepackage{mathtools}
+\usepackage{graphicx}
+
+% Macros
+\newcommand{\image}[1] {
+\begin{figure}[!h]
+  \includegraphics{#1}
+\end{figure}}
+% /Macros
+
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+
+\title{BI-AG1 - Algoritmy a grafy 2016/17}
+\author{Josef Dolezal}
+
+\begin{document}
+
+\tableofcontents
+
+\newpage
+
+\input{01-base-terms.tex}
+
+\newpage
+
+\input{02-graphs.tex}
+
+\input{03-trees.tex}
+
+\input{04-sorting-algorithms.tex}
+
+\input{05-heap.tex}
+
+\input{06-binomial-hep.tex}
+
+\input{99-algorithm-use-cases.tex}
+
+\end{document}

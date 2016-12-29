@@ -1,0 +1,49 @@
+\section{Stromy}
+  \begin{description}
+    \item[Strom] Graf, který je souvislý a zároveň neobsahuje cyklus.
+    \item[Les] Graf, který neobsahuje žádnou kružnici (jeho jednotlivé komponenty jsou stromy).
+    \item[List] Vrchol se stupněm 1.
+  \end{description}
+
+  \subsection{Listy}
+    \begin{itemize}
+      \item Každý strom obsahující alespoň dva dva vrcholy obsahuje alespoň dva listy.
+      \item Je-li G graf o alespoň 2 vrcholech a \emph{v} je list, pak $G - v$ je také strom.
+    \end{itemize}
+
+  \subsection{Vlastnosti}
+    \begin{itemize}
+      \item Pro každé dva vrcholy existuje právě jedna cesta mezi nimi.
+      \item Strom je souvislý a vynecháním libolné hrany bude nesouvislý.
+      \item Počet vrcholů je o 1 větší než počet hran, tedy $|V| = |E| + 1$
+    \end{itemize}
+
+\section{Vzdálenost v grafech, topologické uspořádání}
+
+  \subsection{Kostra grafu}
+    \begin{itemize}
+      \item Podgraf souvislého grafu \emph{G}, který obsahuje všechny vrcholy původního grafu a přitom je stromem.
+      \item Nesouvislé grafy nemají kostru.
+      \item Souvislý graf s kružnicemi má více koster.
+      \item Nějakou kostru lze nalézt algoritmem DFS. Složitost nalezení je $\textrm O(|V| + |E|)$
+    \end{itemize}
+
+  \subsection{BFS - Prohledání do šířky, nejkratší cesta}
+    Algoritmus prochází graf pomocí iterativního výběru sousedů, které přidává do fronty. Poté co v uzlu přidá všechny potomky do fronty, vezme další uzel z fronty a přidá jeho potomky.
+
+    \begin{itemize}
+      \item Algoritmus při průchodu nalezne nejkratší cestu z počátku \emph{s} do libovolného uzlu \emph{v}.
+      \item Pomocí BFS lze najít kostru grafu (tzv. kostru do šířky).
+    \end{itemize}
+
+  \subsection{Topologické třídění}
+    \begin{itemize}
+      \item Orientovaný graf G je acyklickým pokud neobsahuje orientovanou kružnici.
+      \item Je-li G orientovaný a acyklický, pak obsahuje zdroj i stok.
+    \end{itemize}
+
+    \begin{description}
+      \item[Topologické uspořádání] Uspořádání vrcholů grafu do řady $v\textsubscript{1}, v\textsubscript{2}, \dots, v\textsubscript{n}$ takové, kde pro všechny hrany platí, že hrany vedou pouze z vrcholů s menším indexem do vrcholu s menším.
+    \end{description}
+
+    Topologické uspořádání lze nalézt pomocí algoritmu DFS.

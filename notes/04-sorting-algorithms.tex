@@ -1,0 +1,58 @@
+\section{Řazení}
+
+  \subsection{Vlastnosti}
+
+    \subsubsection{Varianty řazení}
+      Řazení probíhá buď offline (nejprve přijdou data, následně se řadí) nebo online (úkoly chodí průběžně během zpracování).
+
+    \subsubsection{Paměťová náročnost}
+      Algoritmy jsou buď in-place (využívají kromě počáteční paměti jen konstantní paměť navíc). Out-of-place algoritmy řadí prvky v nově naalokované paměti.
+
+    \subsubsection{Stabilita}
+      Určuje, jestli navzájem si rovné prvky jsou v seřazené podobě ve stejném pořadí (stabilní) nebo proházené (nestabilní).
+
+    \subsubsection{Citlivost}
+      Udává, zda algoritmus má stejnou složitost pro libovolný vstup (datově necitlivý) nebo se složitost mění v závislosti na vstupu (datově citlivý).
+
+  \subsection{Algoritmy řazení}
+
+    \subsubsection{BubbleSort}
+      BubbleSort funguje na principu prohazování dvojic, kde vždy po porovnání dvojci buď prohodí nebo ponechá ve stejném pořadí a posune se o prvek dál.
+      Po prvním průchodu je na konci největší prvek napravo a dále se řadí $n - 1$ prvků.
+      Algoritmus se zastaví, pokud v jednom běhu zleva doprava neproběhlo žádné prohození.
+
+      \begin{itemize}
+        \item Vhodný na částečně seřazenou posloupnost.
+        \item Seřadí prvky v čase $ \textrm O(n\textsuperscript{2})$.
+        \item Stabilní, in-place, datově citlivý.
+      \end{itemize}
+
+    \subsubsection{ShakerSort}
+      Nadstavba nad BubbleSort. Prochází oběma směry, tedy po první průchodu (zleva doprava) je vpravo největší prvek. Po druhém průchodu (zprava doleva) je nalevo nejmenší prvek.
+
+      \begin{itemize}
+        \item Řeší problém pomalého posunu malých prvů směrem doleva, snižuje tedy počet porovnání.
+        \item Asymptoticky stále $ \textrm O(n\textsuperscript{2})$.
+        \item Stabilní, in-place, datově citlivý.
+      \end{itemize}
+
+    \subsubsection{SelectSort}
+      Posloupnost se rozdělí na seřazenou (zpočátku prázdná) a neseřazenou. Provádí se opakovaný výběr nejmenšího prvku, který se vymění s prvním prvkem neseřazené části.
+
+      \begin{itemize}
+        \item Asymptoticky $ \textrm O(n\textsuperscript{2})$.
+        \item Nestabilní, in-place, datově necitlivý.
+      \end{itemize}
+
+    \subsubsection{InsertSort}
+      Řazení vkládáním. Posloupnost rozdělíme na seřazenou (první prvek posloupnosti) a neseřazenou ($n - 1$ prvků).
+      V prvním kroce vybereme následující prvek a porovnáme ho s prvním a vložíme na správné místo.
+      V dalším kroce bereme následující prvek a porovnáme ho s předchozími, vložíme na správné místo a zbytek podle potřeby posuneme.
+      Takto postupujeme dokud není neseřazená část prázdná.
+
+      \begin{itemize}
+        \item Stabilní, in-place, datově citlivý.
+      \end{itemize}
+
+    \subsubsection{HeapSort}
+      Viz. HeapSort, kapitola Haldy.

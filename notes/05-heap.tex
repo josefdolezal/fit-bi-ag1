@@ -1,0 +1,69 @@
+\section{Haldy}
+
+  \begin{description}
+    \item[Zakořeněný strom] Strom, kde je zvolený vrchol $k$ jako kořen. Vrcholy se dělí podle vzdálenosti od kořene do hladin, kde v nulté hladině je kořen.
+    \item[Binární strom] Zakořeněný strom, kde každý vrchol má maximálně 2 syny. U synů se rozlišuje, který pravý a který levý.
+    \item[Tvar haldy] Strom má všechny hladiny kromě poslední plně obsazené. Poslední hladina se zaplňuje zleva.
+    \item[Haldové uspořádání] Pro každý vrchol $v$ a jeho syna $s$ platí, že $k(s) < k(v)$, tedy že každý syn má větší hodnotu než otec.
+  \end{description}
+
+  \subsection{Binární minimová halda}
+  Datová struktura tvaru binárního stromu, splňující haldové uspořádání a dodržující tvar haldy.
+
+    \subsubsection{Vlastnosti}
+      \begin{itemize}
+        \item Binární halda s $n$ prvky má $\floor{log n} + 1$ hladin.
+        \item Nalezení minima v čase $\textrm O(1)$.
+        \item Odstranění minima v čase $\textrm O(log n)$.
+      \end{itemize}
+
+    \subsubsection{Vložení prvku}
+      \begin{enumerate}
+        \item Nový prvek se přidá na konec nejspodnější hladiny. Pokud je plná, založí se nová hladina.
+        \item Pokud platí haldové uspořádání mezi novým prvkem a jeho otcem, lze skončit.
+        \item Pokud neplatí, prohodíme otce a syna.
+        \item Po prohození mohlo být haldové pravidlo porušeno o hladinu výš, je tedy potřeba zkontrolovat pořadí s novým otcem, v případě nutnosti pak prvky prohodit.
+        \item Tímto způsobem pokračujeme až ke kořeni.
+      \end{enumerate}
+
+    \subsubsection{Odstranění minima}
+      Odstranit minimum nelze udělat triviálně bez porušení haldového pravidla. Lze ale odstranit nejpravější list poslední hladiny.
+      Pro odstranění minima lze prohodit minimum s tímto listem a následně probublat list na správné místo v haldě.
+
+      \begin{enumerate}
+        \item Prohození nejpravějšího listu z poslední hladiny s minimem.
+        \item Odstranění minima (nyní je na pozicu listu - stačí odpojit).
+        \item Probublání kořene na správné místo.
+        \begin{enumerate}
+          \item Výběr syna s nižším klíčem. Pokud tento syn je menší, prohoď jinak skonči.
+          \item Opakuj stejný postup o hladinu níž.
+        \end{enumerate}
+      \end{enumerate}
+
+    \subsubsection{Reprezentace v paměti}
+    \begin{itemize}
+      \item Haldu je možné reprezentovat pomocí pole, pokud očíslujeme postupně vrcholy od 1 do $n$.
+      \begin{itemize}
+        \item Levý syn má index $2i$.
+        \item Pravý syn má index $2i + 1$.
+        \item Otec má index $\floor{\frac{i}{2}}$.
+        \item Výraz $i \, mod \, 2$ udává, zda je vrchol levý či pravý syn.
+      \end{itemize}
+    \end{itemize}
+
+    \subsubsection{Konstrukce haldy}
+      Binární haldu lze pomocí operace HeapInsert vytvořit v čase $\textrm O(n \, log \, n)$.
+      Při reprezentaci polem to ale lze zvládnout i v linárním čase $\textrm O(n)$.
+      Algoritmus \emph{BuildHeap} staví na vlastnosti tvaru haldy, tedy že $\ceil{\frac{n}{2}}$ jsou listy haldy (sami o sobě validní haldy).
+      Stačí tedy na vrcholy s indexy $\floor{\frac{n}{2}}, \dots, 1$ zavolat BubbleDown.
+
+    \subsection{Řazení haldou}
+      Halda díky rychlé konstrukci nabízí vynikající algoritmus na řazení \emph{HeapSort}.
+
+      \begin{enumerate}
+        \item Vlož prvky do pole.
+        \item Pomocí algoritmu \emph{BuildHeap} sestav haldu.
+        \item Opakovaným voláním algoritmu \emph{ExtractMin} vygeneruj setříděnou posloupnost $\textrm O(n \, log \, n)$.
+      \end{enumerate}
+
+      Výsledná složitost pro seřazení haldou je tedy $\textrm O(n \, log \, n)$.
