@@ -1,0 +1,14 @@
+\section{Rekurze, metoda rozděl a panuj}
+  \begin{description}
+    \item[Rekurzivní algoritmus] Postup řešení problému, kdy se nad vstupními daty opakuje stejný postup pro určité části dat. Staví na stejném řešení stejného podproblému s menším rozsahem.
+  \end{description}
+
+  \subsection{MergeSort}
+    Pomocí rekurze půlí intervaly, které má řadit dokud intervaly nejsou jednoprvkové. Při návratu z rekurze tyto jednoprvkové seřazené posloupnosti "slévá".
+
+  \subsection{Rekurze}
+    \begin{description}
+      \item[Koncová] Rekurzivní volání je posledním příkazem algoritmu, po kterém se už neprovádějí žádné další operace.
+      \item[Lineární] V těle algoritmu je jen jedno volání rekurze (nebo dvě ale disjunktní - provede se pouze jedno).
+      \item[Stromová] V těle algoritmu jsou alespoň dvě rekurzivní volání. Obvykle algoritmy rozděl a panuj: $F(n) = F(n-1) + F(n-2)$.
+    \end{description}
