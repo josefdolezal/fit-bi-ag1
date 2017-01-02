@@ -1,0 +1,37 @@
+\section{Binární vyhledávací strom}
+
+  \begin{description}
+    \item[Binární vyhledávací strom] Binární strom, ve kterém v každém uzlu platí, že levý syn je menší a pravý větší než otec.
+  \end{description}
+
+  \subsection{Nalezení minima}
+    \begin{enumerate}
+      \item Je-li levý syn prázdný, vrať sebe.
+      \item (nebo) Vrať minimum z levého podsyna.
+    \end{enumerate}
+
+  \subsection{Vložení prvku}
+    \begin{enumerate}
+      \item Je-li kořen $v$ prázdný, vytvoř nový uzel a vrať ukazatel na $v$.
+      \item (nebo) Je-li hodnota menší než kořen $v$, vlož hodnotu do levého podstromu a vrať výsledek.
+      \item (nebo) Je-li hodnota větší než kořen $v$, vlož hodnotu do pravého podstromu a vrať výsledek.
+      \item (nebo) Hodnota už ve stromu je, vrať ukazatel na $v$.
+    \end{enumerate}
+
+  \subsection{Odstranění prvku}
+    Při odstranění můžou nastat 3 různé situace:
+    \begin{enumerate}
+      \item Vrchol nemá žádného syna, lze ho odebrat.
+      \item Vrchol má jednoho syna, lze ho synem nahradit.
+      \item Vrchol má oba syny, je nutné nalézt následníka a tím ho nahradit, následník má zcela jistě nejvýše jednoho syna.
+    \end{enumerate}
+
+  \subsection{Časová složitost, vyvážení}
+  Časová složitost operací je rovna počtu hladin $\textrm O(h(v)).$ Přičemž hloubka stromu je minimálně $(log|T(v)|)$,
+  nejhůře pak $\textrm O(|T(v)|)$.
+
+  \begin{description}
+    \item[Dokonale vyvážený BVS] Strom, pro který v každém jeho vrcholu $v$ platí, že $||L(v)| - |R(v)|| ≤ 1$.
+  \end{description}
+
+  Je-li strom dokonale vyvážený, mají operace nad ním složitost $\textrm O(log \, n)$, vzhledem k hloubce $\floor{log \, n}$.

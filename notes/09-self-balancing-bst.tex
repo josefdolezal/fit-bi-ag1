@@ -1,0 +1,31 @@
+\section{AVL - Hloubkově vyvážené stromy}
+  \begin{description}
+    \item[AVL strom] Hloubkově vyvážený strom, ve kterém pro kavzdý vrchol $v$ platí $|h((l(v))) - h(r(v)) ≤ 1|$.
+  \end{description}
+
+  \begin{itemize}
+    \item AVL strom na $n$ vrcholech má hloubku právě $log \, n$.
+  \end{itemize}
+
+  Operace vložení a odstranění vrcholu mohou způsobit, že strom přestane být vyvážený.
+  Z tohoto důvodu se v každém vrcholu udržuje znaménko vrcholu, které nabývá hodnot {-1, 0, 1}.
+  Znaméko vrcholu lze spočítat jako $h(r(v)) - h(l(v))$, tedy hloubka pravého prodstromu ponížená o hloubku levého.
+  Vyskytne-li se v nějakém vrcholu jiné znaménko, je potřeba strom opravit pomocí rotace.
+
+  \subsection{Vložení prvku}
+    \begin{itemize}
+      \item Nový vrchol se vkládá jako list se znaménkem 0.
+      \item Pomocí rekurze je potřeba přepočítat znaménka předků na cestě ke kořeni. Může nastat více případů:
+        \begin{enumerate}
+          \item Podmínka je porušena ve vrcholu, který je levým synem:
+            \begin{enumerate}
+              \item Jeho levý podstrom je vyšší - rotace LL.
+              \item Jeho pravý podstrom je vyšší - rotace LR (převede na problém LL).
+            \end{enumerate}
+          \item Podmínka je porušena ve vrcholu, který je pravým synem:
+            \begin{enumerate}
+              \item Jeho pravý podstrom je vyšší - rotace RR.
+              \item Jeho levý podstrom je vyšší - rotace RL (převede na problém RR).
+            \end{enumerate}
+        \end{enumerate}
+    \end{itemize}
