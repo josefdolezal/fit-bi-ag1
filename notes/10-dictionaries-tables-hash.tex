@@ -1,0 +1,53 @@
+\section{Slovníky, tabulky a hashování}
+  \subsection{Hashování}
+    \begin{description}
+      \item[Hashování] Pro množinu klíčů zvolíme konečnou množinu umístění (hashovací tabulka) a hashovací funkci, která každému klíči přiřadí právě jednu přihrádku.
+      Cílem je zvolit takovou velikost a takovou funkci, aby se počet kolizí minimalizoval.
+      \item[Kolize] Protože hashovací tabulka má menší kapacitu než je velikost množiny klíčů, může se stát, že několik klíčů se po použití hashovací funkce zobrazí na jedno umístění.
+      Tento jev se nazývá kolize.
+    \end{description}
+
+    \subsubsection{Kolize}
+      \begin{itemize}
+        \item Metoda řetízků - každé umístění v tabulce je buď prázdné, nebo v něm začíná spojový seznam uložených prvků.
+      \end{itemize}
+
+    \subsubsection{Hashovací funkce}
+      Ideální hashovací funkci (bez kolizí) nelze sestrojit, proto se používají funkce které se chovají "náhodně".
+      \begin{itemize}
+        \item Lineární kongruence $x -> ax \, mod \, m$
+          \begin{itemize}
+            \item Konstanta $m$ bývá prvočíslo a $a$ je dostatečně velká konstanta nesoudělná s $m$ (typicky $0.618m$).
+          \end{itemize}
+        \item Vyšší bity součinu
+        \item Skalární součin
+        \item Polynom
+      \end{itemize}
+
+      \subsubsection{Složitost}
+        Pro ideální průběh hashování vyždujeme následující vlastnosti
+        \begin{enumerate}
+          \item Výpočet hashovací funkce je rychlý $\textrm O(1)$.
+          \item Funkce rozděluje univerzum rovnoměrně.
+          \item Vstupní data z univerza jsou na vstupu rozdělena rovnoměrně.
+        \end{enumerate}
+
+        Uvažujeme-li hashovací tabulku velikosti $m$ s $n$ prvky a funkci $h$ splňující nároky.
+        Potom je střední hodnota hledání/mazání/vkládání $O(n/m)$.
+
+      \subsubsection{Hashování s otevřenou adresací}
+        Použije se pole s $m$ přihrádkami, kde se do každé přihrádky vejde pouze jeden prvek.
+        V případě, že je místo obsazené, zkouší se náhradní tak dlouho, dokud není nalezené volné místo.
+        Hashovací funkce tedy ke každému prvku $k$ z univerza vyhledávací posloupnost.
+        Ta určuje v jakém pořadí se budou náhradní umístění hledat, funkce $h$ je tedy $h(k, i)$.
+
+        \subsubsubsection{Mazání}
+          Pro mazání se používá metoda náhrobků. Pokud je prvek vymazený, označí se umístění náhrobkem a jiný prvek už tam nemůže být vložen.
+          Pokud by se označil jako prázdný, byl by problém s vyhledáváním: to by mohlo předčasně skončit.
+          Jakmile je zaplněný určitý počet prvků (např. $m/4$), tabulka se celá přehashuje.
+
+        \subsubsubsection{Funkce}
+          \begin{description}
+            \item[Lineární přidávání] Prohledávací posloupnost je dána funkcí $h(k, i) = (f(k) + i) \, mod \, m$ kde $f(k)$ je obyčená hashovací funkce. Využívá po sobě jdoucí přihrádky, ale tim vytváří souvislé bloky.
+            \item[Dvojité hashování] Posloupnost je dána funkcí $h(k, i) = (f(k) + i * g(k)) \, mod \, m$ kde $f(k)$ i $h(k)$ jsou hashovací funce, $m$ je prvočíslo a $i$ je počet neúspěšných pokusů.
+          \end{description}
