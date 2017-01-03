@@ -1,0 +1,10 @@
+\section{Dynamické programování}
+  \begin{description}
+    \item[Dynamické programování] Technika založená na rekurzivním rozkladu problému. Na rozdíl od techniky \emph{Rozděl a panuj}
+    využívá DP toho, že se některé problémy opakují. Podmínkou DP je, že každý podproblém se vyřeší právě jednou. Toho se docílí pomocí memorizace.
+  \end{description}
+
+  \subsection{Nejdelší rostoucí podposloupnost}
+    Pole se prochází odzadu, pro každý prvek se projdou odzadu přechůdci (resp. následníci) a hledá se takový,
+    který je větší a má největší roustocí posloupnost.
+    K její délce se přičte jednička a přiřadí se hodnotě zkomaného čísla, pokračuje se o číslo vlevo.
