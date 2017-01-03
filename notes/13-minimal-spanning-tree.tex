@@ -1,0 +1,29 @@
+\section{Minimální kostra}
+  \begin{description}
+    \item[Minimální kostra] Kostra, kteréa má mezi všemi kostrami nejmenší součet vah hran.
+  \end{description}
+
+  Na vyhledávání se používá Jarníkův (Primův) algoritmus.
+
+  \section{Řezy grafu}
+    \begin{description}
+      \item[Řez grafu] Pokud rozdělíme vrcholy grafu na dvě disjunktní množiny $A$ a $B$, hranám majícím jeden vrchol v $A$ a jeden v $B$ řikáme elementární řez grafu.
+    \end{description}
+
+  \subsection{Jarníkův algoritmus}
+    \begin{enumerate}
+      \item Začíná se s jedním vrcholem a žádnou hranou.
+      \item Ze všech již objevených vrcholů se vezmou v potaz všechny hrany, které vedou do neobjeveného vrcholu a z nich se vybere ta s nejmenší vahou.
+      \item Nyní se algoritmus opakuje.
+    \end{enumerate}
+
+  \subsection{Kruskalův algoritmus}
+    Založený na stejném principu jako Jarníkův algoritmus, tedy vybírání hran s nejmenší váhou.
+    Oproti Jarníkovi ale používá metodu spojování stromů.
+    Pokud přidává hranu, musí se vždy podívat, jestli spojuje dvě různé komponenty.
+
+    \subsubsection{Implementace}
+    \begin{enumerate}
+      \item Polem (ke každému prvku si držíme, v jaké komponentě se nachází)
+      \item Pomocné stromy (keříky) - v poli se drží keřík tak, že každý vrchol si pamatuje svého předka. Při vyhledávání se porovnají kořeny keříků, pokud jsou stejné tak se jedná o jednu komponentu. V opačném případě se mělčí připojí pod hlubší.
+    \end{enumerate}
