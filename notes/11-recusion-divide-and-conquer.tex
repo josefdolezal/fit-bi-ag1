@@ -12,3 +12,22 @@
       \item[Lineární] V těle algoritmu je jen jedno volání rekurze (nebo dvě ale disjunktní - provede se pouze jedno).
       \item[Stromová] V těle algoritmu jsou alespoň dvě rekurzivní volání. Obvykle algoritmy rozděl a panuj: $F(n) = F(n-1) + F(n-2)$.
     \end{description}
+
+  \subsection{QuickSort}
+    QuickSort je algoritmus, který k řazení využívá takzvaného pivota. Pomocí pivota rozdělí posloupnost na tři části:
+    \begin{enumerate}
+      \item Levá - Prvky menší než pivot
+      \item Střední - Prvky rovné pivotu
+      \item Pravá - Prvky větší než pivot
+    \end{enumerate}
+
+    Následně algoritmus pustí sám sebe na Levou a Pravou část. Výsledky se na konci spojí a vznikne seřazená posloupnost.
+
+  \subsection{CountingSort}
+    Algoritmus, u kterého je předem nutné znát minimum, maximum a celkový počet prvků:
+    \begin{enumerate}
+      \item Vytvoř dvě pole o velikosti $n$.
+      \item Projdi vstupní data a spočítej kolikrát se každý prvek v poli nachází.
+      \item Počáteční pozici nejmenšího prvku nastav na $1$, následně každou další pozici dopočítej jako pozice předchozího prvku + počet předchozího prvku.
+      \item Vypiš prvky tak, že projdeš vstupní pole a do výstupního pole vypíšeš prvek na pozici, kterou udává tabulka pozic, následně pozici v tabulce pozic inkrementuj.
+    \end{enumerate}
