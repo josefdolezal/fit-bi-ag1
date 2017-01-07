@@ -11,6 +11,10 @@ Seznam materiálů k ostatním předmětům je v [samostatném repozitáři](htt
 Při přípravě na závěrečný semestrální test jsem vytvořil zápisky z prezentací.
 Zápisky jsou napsané v LaTeXu a zkompilované do [PDF](notes/notes.pdf).
 
+## Domácí úlohy
+* [Fakultní labyrint](assignment-one)
+* [Krmení v ZOO](assignment-two)
+
 ## Poznámka
 Uvedené zdrojové kódy nebo jejich části slouží pro inspiraci a jako demonstrace
 možného řešení problému. Důrazně nedoporučuji cizí zdrojové kódy odevzdávat/vydávat za vlastní. Pokud budete přebírat část kódu, uveďte řádně autora - předejdete tím možnému obvinění z plagiátorství ze strany školy.
