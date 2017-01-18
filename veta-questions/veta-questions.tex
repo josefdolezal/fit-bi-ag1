@@ -1,0 +1,220 @@
+\documentclass[20pt]{extarticle}
+\usepackage[utf8]{inputenc}
+\usepackage[czech]{babel}
+\usepackage{t1enc}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{xcolor}
+
+% iPhone 7 plus: 9:16
+% showframe
+\usepackage[paperheight=4.5in,paperwidth=8in,margin=0.5in,heightrounded]{geometry}
+
+% increase math line height
+\addtolength{\jot}{1em}
+
+\pagenumbering{gobble}
+
+\newcommand{\card}[2][]{
+	\vspace*{\fill}
+
+	\newpage
+	\topskip0pt
+	\vspace*{\fill}
+		\Large #2
+
+		\vspace{1cm}
+		\normalsize #1
+	\vspace*{\fill}
+	\newpage
+
+	\small \textcolor{gray}{#2 #1}
+	\topskip0pt
+	\vspace*{\fill}
+
+	\normalsize
+}
+\newcommand{\splitline}{\noindent\rule{8cm}{0.4pt}}
+\newcommand{\pair}[2]{\left(#1, #2\right)}
+
+\begin{document}
+\begin{center}
+
+\topskip0pt
+\vspace*{\fill}
+\Large Josef Doležal\\[1cm]
+\normalsize Veta otázky ZS 2016/7 \textsc{bi-AG1}\\
+\normalsize
+
+\card[zdroj a stok]{Acyklický orientovaný graf}
+\begin{align*}
+  Uspořádaná dvojice \pair{V}{G}, kde $V$ je neprázdná množina vrcholů a $E$ množina orientovaných hran taková, že neobsahuje cyklus. \\
+  Zdroj - vrchol, do kterého nevede žádná hrana \\
+  Stok - vrchol, ze kterého nevede žádná hrana
+\end{align*}
+
+\card{Věta o existenci zdroje v orientovaném grafu}
+\begin{align*}
+  Každý orientovaný graf, který neobsahuje cyklus, má alespoň jeden zdroj.
+\end{align*}
+
+\card{Věta o existenci zdroje v orientovaném grafu}
+\begin{align*}
+  Každý orientovaný graf, který neobsahuje cyklus, má alespoň jeden zdroj.
+\end{align*}
+
+\card{Algoritmus topologického uspořádání orientovaného grafu}
+\begin{align*}
+  \begin{enumerate}
+    \item Zařaď do fronty všechny vrcholy se vstupním stupněm 0.
+    \item (dokud není fronta prázdná) Vyber vrchol z počátku fronty
+    \item - Vypiš vybraný vrchol
+    \item - Pro každého následníka zkontrontroluj, jestli po odstranění hrany má vstupní stupeň 0.
+    \item - Pokud má stupeň 0, přidej ho do fronty.
+  \end{enumerate}
+\end{align*}
+
+\card{Topologické uspořádání orientovaného grafu}
+\begin{align*}
+  Topologické uspořádání orientovaného acyklického grafu $G = \pair{V}{E}$ je takové pořadí vrcholů $v1, v2, ..., vn$ grafu $G$,
+  že pro každou hranu $\pair{v_i}{v_j}$ ∈ \textrm{E} platí $i \lt j$.
+\end{align*}
+
+\card{Neorientovaný graf}
+\begin{align*}
+  Neorientovaný graf je uspořádaná dvojice \pair{V}{E}, kde
+  \begin{enumerate}
+    \item $V$ je množina vrcholů
+    \item $E$ je množina hran
+  \end{enumerate}
+  Hrana je dvouprvková podmnožina $V$.
+\end{align*}
+
+\card{Orientovaný graf}
+\begin{align*}
+  Orientovaný graf G je uspořádaná dvojice \pair{V}{E}, kde
+  \begin{itemize}
+    \item $V$ je neprázdná konečná množina vrcholů
+    \item $E$ je množina orientovaných hran
+  \end{itemize}
+  Orientovaná hrana \pair{u}{v} ∈ $E$ je uspořádaná dvojice různých vrcholů $u$,
+  $v$ ∈ $V$ . Říkáme, že $u$ je předchůdce $v$ a $v$ je následník $u$.
+\end{align*}
+
+\card{Úplný graf $K_n$}
+\begin{align*}
+  Úplný graf na $n$ ($n \ge 1 $) vrcholech $K_n$ je graf $\pair{v}{\binom{V}{2}}$, kde $|V| = n$.
+\end{align*}
+
+\card{Úplný bipartitní graf $K_n$}
+\begin{align*}
+  Nechť $n \geg 1$ a $m \geg 1$.
+  Úplný bipartitní graf s $n$ vrcholy v jedné partitě a $m$ vrcholy v druhé
+  partitě $K_n,m$ je graf $(A \cup B, {{a,b} | a \in A,b \inB})$, kde
+  $A \cap B = \emptyset, |A| = n a |B| = m$.
+\end{align*}
+
+\card{Kružnice $C_n$}
+\begin{align*}
+  Nechť $n \geg 1$. Kružnice délky $n$ (s $n$ vrcholy) je graf
+  $({1, \dots, n}, {{i, i+1} | i \in {1, \dots, n-1}} \cup {{1, n}})$.
+\end{align*}
+
+\card{Cesta $P_m$}
+\begin{align*}
+  Nechť $m \geg 0$. Cesta délky $m$ (s $m$ hranami) je graf
+  $({0, \dots, m}, {{i, i+1} | i \in {0, \dots, m-1}})$.
+\end{align*}
+
+\card{Doplněk grafu $G$}
+\begin{align*}
+  Doplněk $\overline{G}$ grafu $G = \pair{G}{V}$ je graf $\pair{V}{\binom{V}{E} \setminus \E}$.
+\end{align*}
+
+\card{Izomorfismus grafů}
+\begin{align*}
+  Nechť $G$ a $H$ jsou dva grafy. Funkce $f: V(G) \rightarrow V(H)$, která:
+  \begin{itemize}
+    \item je bijekcí,
+    \item pro každou dvojici $u, v \in V(G)$ platí: $\pair{u,v} \in E(G) \Leftrightarrow {f(u), f(v)} \in E(H)$.
+  \end{itemize}
+\end{align*}
+
+\card{Automorfismus}
+\begin{align*}
+  Automorfismus G je izomorfismus se sebou samý, tedy $f: V(G) \rightarrow V(G)$, která:
+  \begin{itemize}
+    \item je bijekcí,
+    \item pro každou dvojici $u, v \in V(G)$ platí: $\pair{u,v} \in E(G) \Leftrightarrow {f(u), f(v)} \in E(G)$.
+  \end{itemize}
+\end{align*}
+
+\card{Stupeň vrcholu $deg_G(v)$}
+\begin{align*}
+  Počet hran grafu G obsahujících vrchol $v$.
+\end{align*}
+
+\card[Uzavřené okolí]{Okolí stupně $N_G(v)$}
+\begin{align*}
+  Množina všech sousedů vrcholu $v$ v grafu $G$.\\
+  Množinu $N_G[v] = N_G(v) \cup \{v\}$ nazveme uzavřené okolí.
+\end{align*}
+
+\card{Regulární graf}
+\begin{align*}
+  Graf $G$ je $r$-regulární, pokud stupeň každého vrcholu je $r$.\\
+  Graf je regulární, pokud je $r$-regulární pro nějaké $r$.
+\end{align*}
+
+\car{Princip sudosti a jeho důsledek}
+\begin{align*}
+  Pro každý graf $G = \pair{V}{E}$ platí\\
+  $$\sum_{v \in V} deg_{G}(v) = 2|E|$$.\\
+  Z tohoto vztahu plyne, že počet vrcholů lichécho stupně je sudý.
+\end{align*}
+
+\card[Matice sousednosti]{Reprezentace grafu}
+\begin{align*}
+  Čtvercová matice $A_{G} = (a_{ij})_{i,j}^n$ je definována předpisem:
+  \[ \begin{cases}
+        1 & pokud \{v_{i}, v_{j}\} \in E \\
+        0 & jinak
+     \end{cases}
+  \]
+\end{align*}
+
+\card[Seznam sousedů]{Reprezentace grafu}
+\begin{align*}
+  Pro každý vrchol $v$ grafu $G$ uchováváme seznam sousedů (např. spojový seznam).
+  Paměťová složitost je $|V| + 2|E|$.
+\end{align*}
+
+\card{Indukovaný podgraf}
+\begin{align*}
+  Graf $H$ je indukovaný podgraf grafu $G$, když\\
+  $V(H) \subseteq V(G)$ a $E(H) = E(G) \cap \binom{V(H)}{2}$.\\
+  Podgraf se značí $H \leq G$.
+\end{align*}
+
+\card{Sled}
+\begin{align*}
+  Doplnit
+\end{align*}
+
+\card{Cesta v grafu}
+\begin{align*}
+  Podgraf izomorfní nějaké cestě $P$. Délka cesty je počet hran.\\
+  V ohodnoceném grafu je pak délka součtem ohodnocení jednotlivých hran.
+\end{align*}
+
+\card{Souvislá komponenta}
+\begin{align*}
+  Indukovaný podgraf $H$ grafu $G$, který:
+  \begin{itemize}
+    \item je souvislý ($\forall u, v \in V: \exists P\pair{u}{v}$),
+    \item neexistuje podgraf $F$, $F \neq H$ takový že $H \subset F$.
+  \end{itemize}
+\end{align*}
+
+\end{center}
+\end{document}
