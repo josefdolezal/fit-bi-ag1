@@ -11,6 +11,9 @@ Seznam materiálů k ostatním předmětům je v [samostatném repozitáři](htt
 Při přípravě na závěrečný semestrální test jsem vytvořil zápisky z prezentací.
 Zápisky jsou napsané v LaTeXu a zkompilované do [PDF](notes/notes.pdf).
 
+Pro ústní část zkoušky (veta otázka) jsem vypracoval jednotlivá témata jako
+testovací kartičky v [PDF](veta-questions/veta-questions.pdf).
+
 ## Domácí úlohy
 * [Fakultní labyrint](assignment-one)
 * [Krmení v ZOO](assignment-two)
