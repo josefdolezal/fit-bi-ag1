@@ -36,6 +36,9 @@
 }
 \newcommand{\splitline}{\noindent\rule{8cm}{0.4pt}}
 \newcommand{\pair}[2]{\left(#1, #2\right)}
+\newcommand{\graph}{G=\pair{V}{E}}
+\newcommand{\edges}[1][G]{\E(#1)}
+\newcommand{\vertexes}[1][G]{\V(#1)}
 
 \begin{document}
 \begin{center}
@@ -116,13 +119,13 @@
 
 \card{Kružnice $C_n$}
 \begin{align*}
-  Nechť $n \geg 1$. Kružnice délky $n$ (s $n$ vrcholy) je graf
+  Nechť $n \geq 1$. Kružnice délky $n$ (s $n$ vrcholy) je graf
   $({1, \dots, n}, {{i, i+1} | i \in {1, \dots, n-1}} \cup {{1, n}})$.
 \end{align*}
 
 \card{Cesta $P_m$}
 \begin{align*}
-  Nechť $m \geg 0$. Cesta délky $m$ (s $m$ hranami) je graf
+  Nechť $m \geq 0$. Cesta délky $m$ (s $m$ hranami) je graf
   $({0, \dots, m}, {{i, i+1} | i \in {0, \dots, m-1}})$.
 \end{align*}
 
@@ -212,8 +215,134 @@
   Indukovaný podgraf $H$ grafu $G$, který:
   \begin{itemize}
     \item je souvislý ($\forall u, v \in V: \exists P\pair{u}{v}$),
-    \item neexistuje podgraf $F$, $F \neq H$ takový že $H \subset F$.
+    \item vyvrací existenci souvislého podgrafu $F$, $F \neq H$ takového že $H \subseteq F$.
   \end{itemize}
+	V inkluzi se jedná o maximální souvislý podgraf.
+\end{align*}
+
+\card[Prohledávání do hloubky]{DFS}
+\begin{align*}
+	Po výběru počátečního vrcholu $p$ z $V$ spuštěn rekurzivní algoritmus:
+	\begin{itemize}
+		\item Pokud je $p$ otevřený vrať se ($return$).
+		\item Označ $p$ jako otevřený.
+		\item Pro každého následníka spusť rekurzivně $DFS$ algoritmus.
+		\item Po projití všech následníků označ uzel jako uzavřený.
+	\end{itemize}
+\end{align*}
+
+\card{Orientovaná cesta}
+\begin{align*}
+	Nechť $m \geq 0$. Orientovaná cesta s $m$ hranami $P_{m}$ je graf\\
+	$({0, \dots, m}, {\pair{i}{i+1} | i \in {0, \dots, m-1}})$.
+\end{align*}
+
+\card[$P_{m}$]{Orientovaná cesta}
+\begin{align*}
+	Nechť $m \geq 0$. Orientovaná cesta s $m$ hranami $P_{m}$ je graf\\
+	$({0, \dots, m}, {\pair{i}{i+1} | i \in {0, \dots, m-1}})$.\\
+	(Oproti standardní cestě se jedná o množinu uspořádaných dvojic)
+\end{align*}
+
+\card[$C_{n}$]{Orientovaná kružnice}
+\begin{align*}
+	Nechť $n \geq 2$. Orientovaná cesta s $n$ vrcholy je graf\\
+	({1, \dots, n}, {\pair{i}{i+1} | i \in {1, \dots, n-1}} \cup {(n, 1)})
+\end{align*}
+
+\card[$deg_{G}^{+}(v)$]{Vstupní stupeň}
+\begin{align*}
+	Počet orientovaných hran hran orientovaného grafu $G$\\
+	končících ve vrcholu $v$.
+\end{align*}
+
+\card[$deg_{G}^{+}(v)$]{Výstupní stupeň}
+\begin{align*}
+	Počet orientovaných hran hran orientovaného grafu $G$\\
+	vycházejících z vrcholu $v$.
+\end{align*}
+
+\card[orientovaného grafu]{Symetrizace}
+\begin{align*}
+	Neorientovaný graf $sym(G)= \pair{V'}{G'}$ kde $V' = V$, a\\
+	${u, v} \in E'$ právě když $\pair{u}{v} \in E$ nebo $\pair{v}{u} \in E$.
+\end{align*}
+
+\card{Slabá souvislost}
+\begin{align*}
+	Graf $G=\pair{V}{E}$, jehož symetrizace $sym(G)$ je souvislá.
+\end{align*}
+
+\card{Silná souvislost}
+\begin{align*}
+	Graf, kde pro každé vrcholy $u, v \in V$ existuje orientovaná cesta z $u$ do $v$\\
+	a současně existuje orientovaná cesta z $v$ do $u$ (ne nutně ta samá).
+\end{align*}
+
+\card{Strom, les a list}
+\begin{align*}
+	\begin{description}
+		\item[Strom] Graf $G$, který je souvislý a acyklický.
+		\item[Les] Graf $G$, který neobsahuje kružnice (nesouvislý, komponenty jsou stromy).
+		\item[List] Vrchol $v$ jehož stupeň $deg_{G}(v)=1$.
+	\end{description}
+\end{align*}
+
+\card{Tvrzení o existenci listů}
+\begin{align*}
+	Každý strom $T$ s alespoň 2 vrcholy obsahuje alespoň 2 listy.\\
+	Lze dokázat pomocí hledání nejdelší cesty.
+\end{align*}
+
+\card{Věta o trhání listů}
+\begin{align*}
+	Je-li $\graph$ graf na alespoň 2 vrcholech a $v \in \vertexes$ je list. Pak:
+	\begin{itemize}
+		\item $G$ je strom.
+		\item $G - v$ je strom.
+	\end{itemize}
+\end{align*}
+
+\card{Vlastnosti stromů}
+\begin{align*}
+	\begin{itemize}
+		\item $G$ je strom.
+		\item Pro každé dva vrcholy $u,v \in V$ existuje právě jedna cesta z $u$ do $v$.
+		\item $G$ je souvislý a vynecháním libovolné hrany vznikne nesouvislý graf.
+		\item $G$ je souvislý a platí $|V|=|E|+1$.
+	\end{itemize}
+\end{align*}
+
+\card{Kostra grafu}
+\begin{align*}
+	Nechť $G$ je souvislý. Podgraf $K$ grafu $G$ nazveme kostrou $G$, pokud\\
+	$\vertexes{K}=\vertexes{G}$ a $K$ je strom.
+\end{align*}
+
+\card{Vzdálenost dvou vrcholů $d\pair{u}{v}$}
+\begin{align*}
+	Délka nejkratší cesty v $G$ spojující $u$ a $v$. Pokud cesta neexistuje\\
+	(jsou z jiných komponent), pak $d\pair{u}{v}=\infinity$.
+\end{align*}
+
+\card[BFS]{Prohledávání do šířky}
+\begin{align*}
+	$DFS$ začíná výběrem počátečního vrcholu $s$ a dej mu hodnotu 0, následně:
+	\begin{itemize}
+		\item Označ všechny vrcholy jako nenalezené.
+		\item Přidej $s$ do fronty.
+		\item Dokud není fronta prázdná
+		\begin{itemize}
+			\item Odeber vrchol fronty $v$ a pro každého jeho následníka $w$.
+			\item Je-li $w$ nenalezený, označ ho jako nalezený a jeho hodnotu nastav na hodnotu $v + 1$.
+			\item Přidej $w$ do fronty.
+		\end{itemize}
+	\end{itemize}
+\end{align*}
+
+\card{Vlastnosti kostry BFS}
+\begin{align*}
+	Doplnit
 \end{align*}
 
 \end{center}
