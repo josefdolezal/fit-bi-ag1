@@ -4,7 +4,9 @@
 \usepackage{t1enc}
 \usepackage{amsfonts}
 \usepackage{amsmath}
+\usepackage{mathtools}
 \usepackage{xcolor}
+
 
 % iPhone 7 plus: 9:16
 % showframe
@@ -42,7 +44,11 @@
 \newcommand{\edges}[1][G]{\E(#1)}
 \newcommand{\vertexes}[1][G]{V(#1)}
 
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+
 \begin{document}
+
 \begin{center}
 
 \topskip0pt
@@ -316,21 +322,21 @@
 	Funguje na principu probublávání velkých prvků. Algoritmus vezme dva prvky a pokud
 	jsou ve špatném pořadí, prohodí je. Následně se posouvá o prvek dál.\\
 	Ukončuje se ve chvíli, kdy v jednom běhu neproběhlo žádné prohození.\\
-	Složitost \Omicron(n^2), stabilní, in-place, datově citlivý.
+	Složitost $O(n^2)$, stabilní, in-place, datově citlivý.
 }
 
 \card[SelectSort]{Řadící algoritmy}{
 	Funguje na principu vyhledávání nejnižšího prvku. Vstup se rozdělí na seřazenou
 	a neseřazenou posloupnost. V každém kroku se vybere minimum z neseřazené a vloží
 	se na konec seřazené. Volné místo se vyplní sešoupnutím prvků.\\
-	Složitost \Omicron(n^2), nestabilní, in-place a datově necitlivý.
+	Složitost $O(n^2)$, nestabilní, in-place a datově necitlivý.
 }
 
 \card[InsertSort]{Řadící algoritmy}{
 	Na principu řazení vkládáním. Vstup se rozdělí na seřazenou a neseřazenou posloupnost.
 	V každém kroku se vezme první prvek neseřazené posloupnosti a vloží se na správné
 	místo v seřazené.\\
-	Složitost \Omicron(n^2) (v lepším případě \Omicron(n)), stabilní, in-place a datově citlivý.
+	Složitost $O(n^2)$ (v lepším případě $O(n)$), stabilní, in-place a datově citlivý.
 }
 
 \card[TopSort]{Třídící algoritmus}{
@@ -339,7 +345,7 @@
 		\item Pro každou hranu $\pair{u}{v}$, proveď $D(u)+=1$. Všechny vrcholy $v$, které mají
 		$D(v)=0$ přidej do fronty.
 		\item Dokud není fronta prázdná vezmi a vypiš vrchol $v$ z čela fronty a pro každou
-		hranu směřující z něho do $w$ proveď $D(w)-=1$, pokud nyní $D(w)==0$, zařaď ho do fronty.
+		hranu směřující z něho do $w$ proveď $D(w)-=1$, pokud nyní $D(w)=0$, zařaď ho do fronty.
 	\end{itemize}
 	\normalsize
 }
@@ -350,6 +356,79 @@
 		\item[Stabilita] Stabilní, pokud správně seřazené prvky ze vstupu mají stejné pořadí i na výstupu.
 		\item[Citlivost] Určuje, jestli se mění časová složitost na základě vstupu.
 	\end{description}
+}
+
+\card[předek, potomek, otec a syn]{Zakořeněný strom}{
+	\begin{description}
+		\item[Zakořeněný strom] Uspořádaná dvojice $\pair{T}{k}$, kde $k \in V(T)$
+		je jeden zvolený vrchol stromu $T$ zvaný \textbf{kořen}.
+		\item[Předek a potomek] Leží-li $u$ na cestě z $v$ do kořene, pak je
+		$u$ \textbf{předek} a $v$ \textbf{potomek}.
+		\item[Otec a syn] Pokud je navíc $\{u, v\} \in E(T)$ hrana, $u$
+		je \textbf{otec} a \textbf{syn}.
+	\end{description}
+}
+
+\card{Binární strom}{
+	Strom, který splňuje:
+	\begin{itemize}
+		\item je zakořeněný,
+		\item každý vrchol má nejvýše dva syny,
+		\item u synů rozlišujeme, který je pravý a který levý.
+	\end{itemize}
+}
+
+\card{Binární minimová halda}{
+	Struktura tvaru binárního stromu, splňující:
+	\begin{itemize}
+		\item \textbf{Tvar haldy}: Strom má všechny hladiny kromě poslední plně obsazené.
+		Poslední hladina je zaplně zleva doprava.
+		\item \textbf{Haldové uspořádání}: Je-li $v$ vrchol a $s$ jeho syn,
+		pak platí $k(v)<k(s)$.
+	\end{itemize}
+}
+
+\card[binární haldy]{Počet hladin}{
+	Binární halda s $n$ prvky má $\floor{\log n} + 1$  hladin.
+}
+
+\card[vložení prvku]{Binární halda}{
+	Binární halda dovoluje vložit prvek na pozici listu. Tímto ale mohlo být
+	porušeno haldové pravidlo. Je tedy potřeba prvek \textit{probublat} na
+	správné místo. Probulání probíhá provnáním s hodnotou v rodiči (pokud je v
+	rodiči větší, prohodí se).\\
+	Složitost je $O(\log n)$.
+}
+
+\card[odstranění minima]{Binární halda}{
+	Odstranit minimum není triviálně možné. Lze ho ale prohodit s nepravějším
+	listem, následně odstranit a list probublat dolů na správné místo.\\
+	Složitost je $O(\log n)$.
+}
+
+\card[reprezentace polem]{Binární halda}{
+	Pro reprezentaci haldy lze snadno využít pole. Pokud uzly označíme čísly
+	$1, \dots, n$, pak pro vrchol $v$ s indexem $i$ platí:
+	\small
+	\begin{itemize}
+		\item pravý syn má index $2i + 1$,
+		\item levý syn má index $2i$,
+		\item otec má index $\floor{\frac{i}{2}}$,
+		\item číslo $i \mod 2$ udává, zda-li $v$ je pravý syn
+	\end{itemize}
+	\normalsize
+}
+
+\card[algoritmus BuildHeap]{Binární halda}{
+	Haldu lze složit v čase $O(n)$ zabubláním prvků, které nejsou listy.\\
+	Algoritmus vezme vrcholy $\floor{\frac{n}{2}}, \dots, 1$ a postupně na ně zavolá
+	operaci BubbleDown.
+}
+
+\card[řazení HeapSort]{Binární halda}{
+	Prvky $x_1, \dots, x_n$ vložíme do pole a zavoláme na něj \textit{BuildHeap}.\\
+	Nyní opakovaně voláme \textit{HeapExtractMin} a hodnoty ukládáme do výstupního pole.\\
+	Složitost řazení je $O(n \log n)$.
 }
 
 \end{center}
