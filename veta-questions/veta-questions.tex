@@ -312,5 +312,45 @@
 	Doplnit
 }
 
+\card[BubbleSort]{Řadící algoritmy}{
+	Funguje na principu probublávání velkých prvků. Algoritmus vezme dva prvky a pokud
+	jsou ve špatném pořadí, prohodí je. Následně se posouvá o prvek dál.\\
+	Ukončuje se ve chvíli, kdy v jednom běhu neproběhlo žádné prohození.\\
+	Složitost \Omicron(n^2), stabilní, in-place, datově citlivý.
+}
+
+\card[SelectSort]{Řadící algoritmy}{
+	Funguje na principu vyhledávání nejnižšího prvku. Vstup se rozdělí na seřazenou
+	a neseřazenou posloupnost. V každém kroku se vybere minimum z neseřazené a vloží
+	se na konec seřazené. Volné místo se vyplní sešoupnutím prvků.\\
+	Složitost \Omicron(n^2), nestabilní, in-place a datově necitlivý.
+}
+
+\card[InsertSort]{Řadící algoritmy}{
+	Na principu řazení vkládáním. Vstup se rozdělí na seřazenou a neseřazenou posloupnost.
+	V každém kroku se vezme první prvek neseřazené posloupnosti a vloží se na správné
+	místo v seřazené.\\
+	Složitost \Omicron(n^2) (v lepším případě \Omicron(n)), stabilní, in-place a datově citlivý.
+}
+
+\card[TopSort]{Třídící algoritmus}{
+	\small
+	\begin{itemize}
+		\item Pro každou hranu $\pair{u}{v}$, proveď $D(u)+=1$. Všechny vrcholy $v$, které mají
+		$D(v)=0$ přidej do fronty.
+		\item Dokud není fronta prázdná vezmi a vypiš vrchol $v$ z čela fronty a pro každou
+		hranu směřující z něho do $w$ proveď $D(w)-=1$, pokud nyní $D(w)==0$, zařaď ho do fronty.
+	\end{itemize}
+	\normalsize
+}
+
+\card[Vlastnosti]{Řadící algoritmy}{
+	\begin{description}
+		\item[Pamětová náročnost] Rozlišují se In-place a Out-of-place algoritmy.
+		\item[Stabilita] Stabilní, pokud správně seřazené prvky ze vstupu mají stejné pořadí i na výstupu.
+		\item[Citlivost] Určuje, jestli se mění časová složitost na základě vstupu.
+	\end{description}
+}
+
 \end{center}
 \end{document}
