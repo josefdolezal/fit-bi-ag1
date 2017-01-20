@@ -442,5 +442,74 @@
 	neboli amortizovaná složitost je $O(1)$.
 }
 
+\card[$B_k$]{Binomiální strom}{
+	Uspořádaný (záleží na pořadí synů) zakořeněný strom, pro který platí:
+	\begin{enumerate}
+		\item $B_0$ je tvořen pouzen kořenem,
+		\item Pro $k \geq 1$ získáme $B_k$ ze stromů $B_0, B_1, \dots, B_{k-1}$ tak,
+		že přidáme nový kořen a kořeny těchto stromů (v tomto pořadí) přidáme jako jeho syny.
+	\end{enumerate}
+}
+
+\card[Binomiálního stromu $B_k$]{Počet hladin, vrcholů a stupeň kořene}{
+	Počet hladin $B_k$ je $k+1$, počet vrcholů je $2^k$ a stupeň kořene je $k$.
+}
+
+\card[Binomiálního stromu $B_k$]{Počet vrcholů v hloubce $i$}{
+	Počet vrcholů stromu $B_k$ v hloubce $i$, $0 \leq i \leq k$, je\\
+	$n_k(i)=\binom{k}{i}$.
+}
+
+\card{Binomiální minimová halda}{
+	\small
+	Halda obsahující $n$ prvků se skládá ze souboru binomiálních stromů
+	$T=T_1, \dots, T_l$, kde:\\
+	\begin{itemize}
+		\item Pro každý strom $T_i$ platí haldové uspořádání.
+		\item V souboru $T$ se žádný řád binomiálního stromu nevyskytuje vícekrát.
+		\item Soubor stromů je uspořádán vzestupně.
+	\end{itemize}
+	\normalsize
+}
+
+\card[v Binomiální haldě]{Výskyt stromu $T$}{
+	Binomiální strom $B_k$ se v souboru stromů $n$-prvkové binomiální haldy vyskytuje
+	právě tehdy, když je ve dvojkovém zápisu čísla $n$ $k$-tý nejnižší bit
+	nastaven na 1.
+}
+
+\card[Binomiálních hald]{Sloučení}{
+	\small
+	Sloučení hald probíhá obdobně jako sčítání binárních čísel pod sebou.
+	Postupně se slučují stromy stejného řádu způsobem:
+	\begin{itemize}
+		\item Pokud obě haldy obsahují stromy slučovaného řádu, vznikne strom $B_{k+1}$
+		a bere se jako přenos.
+		\item Pokud mám přenos a obě haldy mají stromy se stejným řádem, vypíše se
+		přenos a sločí se stromy $B_{k+1}$ čímž vzniká nový přenos.
+		\item Pokud mám přenos a jen jedna halda obsahuje strom $B_{k+1}$, sloučím
+		ho s přenosem a vznikne nový přenos.
+		\item Pokud mám přenos a ani jedna halda neobsahuje strom $B_{k+1}$, vypíšu ho.
+	\end{itemize}
+	Časová složitost je $O(\log n)$.
+	\normalsize
+}
+
+\card[Binomiálních hald]{Vložení prvku}{
+	Probíhá pomocí sloučení hald (z prvku se stane $B_0$).\\
+	Časová složitost $\Theta(1)$.
+}
+
+\card[Binomiálních hald]{Odebrání minima}{
+	\small
+	\begin{itemize}
+		\item Najdeme v haldě strom $T$, jehož kořen je minimum. Odpojíme $T$ z haldy.
+		\item Odtrhneme všechny syny a vložíme je do nové haldy $H'$.
+		\item Sloučíme BHMerge$(H, H')$.
+	\end{itemize}
+	Časová složitost je $O(\log n)$.
+	\normalsize
+}
+
 \end{center}
 \end{document}
