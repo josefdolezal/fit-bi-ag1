@@ -479,7 +479,7 @@
 }
 
 \card[Binomiálních hald]{Sloučení}{
-	\small
+  \footnotesize
 	Sloučení hald probíhá obdobně jako sčítání binárních čísel pod sebou.
 	Postupně se slučují stromy stejného řádu způsobem:
 	\begin{itemize}
@@ -509,6 +509,76 @@
 	\end{itemize}
 	Časová složitost je $O(\log n)$.
 	\normalsize
+}
+
+\card[BVS]{Binární vyhledávací strom}{
+	Binární strom, v jehož každém vrcholu $v$ je uložen unikátní klíč $k(v)$.
+	Pro každý $v$ pak musí platit:
+	\begin{itemize}
+		\item Pokud $a$ je v levém podstromu, pak $k(a) < k(v)$.
+		\item Pokud $b$ je v levém podstromu, pak $k(b) > k(v)$.
+	\end{itemize}
+}
+
+\card[Vložení prvku]{Binární vyhledávací strom}{
+	\small
+	Vkládám vrchol $k$ do stromu $T$:
+	\begin{itemize}
+		\item Pokud $T$ je prázdný, vytvoř vrchol z $k$ a vrať ho.
+		\item (nebo) Pokud $k$ je menší než kořen, vlož $k$ do $L(T)$.
+		\item (nebo) Pokud $k$ je větší než kořen, vlož $k$ do $R(T)$.
+	\end{itemize}
+	Časová složitost je $O(n)$.
+}
+
+\card[Odstranění prvku]{Binární vyhledávací strom}{
+	\small
+	\begin{itemize}
+		\item (nebo) Pokud je $k$ je menší než kořen, mažeme z levého podstromu.
+		\item (nebo) Pokud je $k$ je větší než kořen, mažeme z pravého podstromu.
+		\item (nebo) Pokud se rovná a má jednoho syna, nahradíme ho synem.
+		\item (nebo) Pokud se se rovná a má oba syny, nahradíme ho následníkem.
+	\end{itemize}
+	Časová složitost je $O(n)$.
+}
+
+\card[nalezení následníka]{Binární vyhledávací strom}{
+	\small
+	Při hledání následníka vrcholu $v$ může nastat:
+	\begin{itemize}
+		\item $v$ má pravého syna: následník je minimum z pravého podstromu
+		\item $v$ je levý syn, vrať otce $v$
+		\item (jinak) $u$ je otec $v$, dokud $u$ je pravým synem: $u \leftarrow$ otec($u$), následně vrať minimum z otce $u$ (může být $null$)
+	\end{itemize}
+}
+
+\card[nalezení předchůdce]{Binární vyhledávací strom}{
+	\small
+	Při hledání předchůdce vrcholu $v$ může nastat:
+	\begin{itemize}
+		\item $v$ má levého syna: následník je maximum z pravého podstromu
+		\item $v$ je pravý syn, vrať otce $v$
+		\item (jinak) $u$ je otec $v$, dokud $u$ je levým synem: $u \leftarrow$ otec($u$), následně vrať maximum z otce $u$ (může být $null$)
+	\end{itemize}
+}
+
+\card{AVL Strom}{
+	Binární vyhledávací strom, kde pro každý vrchol $v$ platí, že\\
+	$|h(l(v)) - h(r(v)) \leq 1|$.\\
+	Tedy, že hloubky podstromů se mohou lišit maximálně o 1.
+}
+
+\card[Jednoduchá rotace]{AVL Strom}{
+	Pokud se ve vrcholu $v$ liší hloubky pod stromů více neže o 1 a zároveň
+	do $v$ se nerovnost propagovala z levého (L), resp. pravého (R) syna a do toho
+	z jeho levého (L), resp. pravého (R) syna pak provedeme LL, resp. RR rotaci.
+}
+
+\card[Dvojitá rotace]{AVL Strom}{
+	Pokud se ve vrcholu $v$ liší hloubky pod stromů více neže o 1 a zároveň
+	do $v$ se nerovnost propagovala z levého (L), resp. pravého (R) syna a do toho
+	z jeho levého (R), resp. pravého (L) syna pak provedeme LR, resp. RL rotaci.
+	Jednoduchou rotací lze přejít do stavu LL nebo RR.
 }
 
 \end{center}
