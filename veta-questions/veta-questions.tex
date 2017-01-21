@@ -611,5 +611,58 @@
 	kde $f$ a $g$ jsou různé hashovací funkce a $i$ je počet neúspěšných pokusů.
 }
 
+\card{MergeSort}{
+	Vsupní posloupnost $n$ prvků rozdělíme na $\floor{\frac{n}{2}}$ a $\ceil{\frac{n}{2}}$
+	prvků a na obě poloviny zavoláme rekurzivně stejný algoritmus. Rekurze se zastavuje
+	u jednoprvkové posloupnosti, která je seřazená, Při návratu z rekurze se seřazené
+	posloupnosti slévají do jedné. Časová i paměťová složitost \Theta(n).
+}
+
+\card[$x$ a $y$]{Rychlé násobení čísel}{
+	Spočívá v rozdělení čísel $x$ a $y$ na $x=a10^{\frac{n}{2}} + b$, $x=c10^{\frac{n}{2}} + d$.\\
+	V prvním kroku lze vyjádřit: $xy = ac10^n + (ad + bc)10^{\frac{n}{2}} + bd$ s \Theta(n).\\
+	V druhém kroku lze rozepsat $(ad + bc) = ((a+b)(c+d) - ac - bd)$ a dospět k\\
+	$xy = ac10^n + ((a+b)(c+d) - ac - bd)10^{\frac{n}{2}} + bd$ se složitostí \Theta($n^{\log 3}$).
+}
+
+\card[k-tý nejmenší prvek]{QuickSelect}{
+	\small
+	Rekurzivní algoritmus, zvolím si pivota $p$ a posloupnost rozdělím na $L$ (prvky menší
+	než $p$), $P$ (prvky větší než $p$) a $S$ (prvky rovné $p$).
+	\begin{itemize}
+		\item Pokud $k \leq |L|$ vrať $QuickSelect(L, k)$
+		\item (nebo) je-li $k \leq |L|+|S|$ vrať $p$
+		\item (nebo) vrať $QuickSelect(P, k-|L|-|S|)$
+	\end{itemize}
+}
+
+\card{QuickSort}{
+	Obdobně jako \textit{QuickSelect} rozděluje posloupnost na $L$, $P$ a $S$ podle pivota $p$.
+	Rekurzivně seřadí $L$ a $P$ a části spojí za sebe a vrátí.
+}
+
+\card[v porovnávacím modelu]{Dolní mez složitosti vyhledávání}{
+	Každý deterministický algoritmus v porovnávacím modelu, který nalezne prvek v
+	$n$-prvkové seřazené posloupnsti, pužije nejméně \Omega(\log n) porovnání.
+}
+
+\card[v porovnávacím modelu]{Dolní mez složitosti řazení}{
+	Každý deterministický algoritmus v porovnávacím modelu, který seřadí $n$-prvkovou
+	posloupnost použije alespoň \Omega(n \log n) porovnání.
+}
+
+\card{CountingSort}{
+	Řadí $n$ prvků z množiny $\{0, \dots, r\}$. Nejprve projde pole a spočítá,
+	kolikrát tam který prvek je. Z tohoto počtu vypočte následně na jakou pozici
+	prvek ve výstupním poli umístí (drží si tabulku kde si napočítá indexy). Když
+	pak prochází vstupní pole, dívá se do tabulky indexů a index inkrementuje.
+}
+
+\card{LexCountingSort}{
+	Používá se k řazení $n$ $k$-tic z množiny $\{1, \dots, r\}^k$.\\
+	Algoritmus řadí pomocí algoritmu \textit{CountingSort} podle $i$-té souřadnice
+	zleva (vezme $i$-tou souřadnici všech $k$-tic a podle ní odzadu řadí).
+}
+
 \end{center}
 \end{document}
