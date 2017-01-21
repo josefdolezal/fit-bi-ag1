@@ -581,5 +581,34 @@
 	Jednoduchou rotací lze přejít do stavu LL nebo RR.
 }
 
+\card{Hashování}{
+	Pro univerzum klíčů $U$ zvolíme konečnou množinu přihrádek $P={0, \dots, m}$
+	(\textbf{hashovací tabulku}) a \textbf{hashovací funkci} $h: U \to P$, která
+	každému klíči přiřadí jednu přihrádku. Množinu klíčů $K \subset U$ umisťujeme
+	do přihrádek $\forall k \in K h(k)$.
+}
+
+\card[s řetízky]{Hashování}{
+	Hashovací tabulka je pole $m$, přihrádek, které jsou buď prázdné nebo v nich
+	začínají spojové seznamy uložených prvků.
+}
+
+\card[s otevřenou adresací]{Hashování}{
+	Každý klíč $k \in U$ má \textbf{vyhledávací posloupnost} $h(k, 0), \dots, h(k, m-1)$,
+	která určuje v jakém pořadí se budou přihrádky zkoušet. Pokud algoritmus narazí
+	na zaplněnou přihrádku, zkusí další z posloupnosti.
+}
+
+\card[s lineárním přidáváním]{Hashování}{
+	Prohledávací posloupnost je dána funkcí $h(k, i) = (f(k) + i) \mod m$, kde
+	$f(k)$ je hashovací funkce a $i$ je počet neúspěšných pokusů. Funkce tedy zkouší
+	přihrádky jdoucí po sobě.
+}
+
+\card[s dvojitým hashováním]{Hashování}{
+	Hashovací posloupnost je dána funkcí $h(k, i) = (f(k) + i \cdot g(k) mod m)$
+	kde $f$ a $g$ jsou různé hashovací funkce a $i$ je počet neúspěšných pokusů.
+}
+
 \end{center}
 \end{document}
