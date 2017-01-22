@@ -703,5 +703,60 @@
 	\end{itemize}
 }
 
+\card[ohodnoceného grafu]{Minimální kostra}{
+	Existuje $\graph$ souvislý neorientovaný graf a $w: E \to \R$ je \textbf{váhová funkce},
+	která přiřazuje hranám čísla - váhy.\\
+	Minimální kostra je taková, která má mezi všemi kostrami minimální váhu.
+}
+
+\card[hledání minimální kostry]{Jarníkův algoritmus}{
+	\begin{itemize}
+		\item Začíná se se stromem, který jeden vrchol a žádnou hranu.
+		\item V dalším kroku se vybere incidentní hrana s tímto vrcholem s nejmenší váhou.
+		\item Opakujeme postup: vybereme nejlehčí z hran, která vede ze stromu do původního grafu.
+		Tento postup se opakuje dokud v původním grafu jsou vrcholy.
+	\end{itemize}
+	Časová složitost $O(nm)$, paměťová $O(n+m)$, kde $n=|V|$ a $m=|E|$.
+}
+
+\card{Elementární řez grafu}{
+	Nechť $A$ je podmožina vrcholů grafu $\graph$ a $B$ její doplněk ($B=V\setminus$A).
+	Množina hran $\{a_i, a_j\}$ kde $a_i \in A$ a $a_j \in B$ je \textbf{elementární řez}
+	grafu $G$ určený množinami $A$ a $B$.
+}
+
+\card{Lemma řezech grafu}{
+	Nechť $G$ je graf s unikátními vahami, $R$ nějaký jeho elementární řez a $e$ nejlehčí
+	hrana řezu tohoto řezu.\\
+	Pak $e$ leží v každé minimální kostře grafu $G$.
+}
+
+\card[hledání minimální kostry]{Kruskalův algoritmus}{
+	Nechť $G$ je graf s unikátními vahami, $R$ nějaký jeho elementární řez a $e$ nejlehčí
+	hrana řezu tohoto řezu.\\
+	Pak $e$ leží v každé minimální kostře grafu $G$.
+}
+
+\card[hledání minimální kostry]{Kruskalův algoritmus}{
+	\small
+	Na principu vyhledávání nejlevnějších hran (vynechávají se ty, které tvoří cyklus).
+	\begin{itemize}
+		\item Seřaď hrany podle váhy a vytvoř strom $T=(V, \emptyset)$.
+		\item Pro $i=1,\dots,m$ opakuj: pokud krajní body hrany $e_i$ leží v různých
+		komponentách, přidej je do stromu (v opačném případě tvoří cyklus)
+	\end{itemize}
+	Složitost je $O(m \log n + n^2)$.
+}
+
+\card[pomocí keříků]{Struktura Union-Find}{
+	\small
+	Struktura je reprezentovaná polem, kde si každý syn drží index rodiče. Find (
+	udávající zda jsou dva vrcholy ve stejné komponentě) traverzuje přes rodiče
+	až do kořene keříku a porovnává jestli mají stejný kořen. Každý kořen si drží
+	svou hloubku. Při slučování dvou keřů se mělčí dát pod hlubší, tím se nezmění hlouba.
+	Pokud mají stejnou hloubku, jeden se zapojí pod druhý a zvýší se hloubka nového kořene.\\
+	Kruskalův algoritmus má následně složitost $O(m \log n)$.
+}
+
 \end{center}
 \end{document}
