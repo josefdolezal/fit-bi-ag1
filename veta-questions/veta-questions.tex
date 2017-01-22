@@ -758,5 +758,63 @@
 	Kruskalův algoritmus má následně složitost $O(m \log n)$.
 }
 
+\card[nejkratší cesta v ohodnoceném grafu]{Dijkstrův algoritmus}{
+	\footnotesize
+	\begin{itemize}
+		\item Všechny označím jako nenalezené, $h(v) = \infty$, $h(v_0) = 0$, $v_0$ otevřený
+		\item Dokud existuje otevřený vrchol $v$, vyber takový, který má nejmenší $h(v)$.
+		Pro následníky $w$ vrcholu $v$:
+		\begin{itemize}
+			\item Pokud $h(w) > h(v) + l(v, w)$: $h(w) = h(v) + l(v, w)$, stav($w$) otevřený
+			a $P(w) = v$.
+			\item Po průchodu všemi sousedy zavři $v$.
+		\end{itemize}
+	\end{itemize}
+	S použitím haldy je složitost $O((n+m) \cdot \log n).$\\
+	Funguje i na grafech se záporným ohodnocením hran, ale bez záporných cyklů.
+}
+
+\card{Relaxace}{
+	Relaxace je obecný případ Dijkstrova algoritmu, kde při vybírání otevřeného
+	vrcholu se bere libovolný (nikoliv nejmenší). Na rozdíl od Dijkstry může
+	jeden vrchol otevřít i uzavřít vícekrát.
+}
+
+\card[nejkratší cesta v ohodnoceném grafu]{Bellman-Fordův algoritmus}{
+	Funguje na podobném principu jako Dijkstrův algoritmus. Místo vybírání
+	prvku s nejnižším bere vrchol z čela fronty pro jeho následníky provádí:
+	\begin{itemize}
+		\item Pokud $h(w) > h(v) + l(v, w)$:
+		\begin{itemize}
+			\item $h(w) = h(v) + l(v, w)$
+			\item Pokud stav($w$) \neq otevřený, přidej $w$ do fronty
+			\item stav($w$) nastav na otevřený
+			\item uzavři $v$
+		\end{itemize}
+	\end{itemize}
+	Oproti Dijkstrovi také znovu otevírá již uzavřené uzly.
+}
+
+\card[nejkratší cesta v ohodnoceném grafu]{Bellman-Fordův algoritmus}{
+	Funguje na podobném principu jako Dijkstrův algoritmus. Místo vybírání
+	prvku s nejnižším bere vrchol z čela fronty pro jeho následníky provádí:
+	\begin{itemize}
+		\item Pokud $h(w) > h(v) + l(v, w)$:
+		\begin{itemize}
+			\item $h(w) = h(v) + l(v, w)$
+			\item Pokud stav($w$) \neq otevřený, přidej $w$ do fronty
+			\item stav($w$) nastav na otevřený
+			\item uzavři $v$
+		\end{itemize}
+	\end{itemize}
+	Oproti Dijkstrovi také znovu otevírá již uzavřené uzly. Složitost $O(nm)$
+}
+
+\card[nejkratší cesta v ohodnoceném grafu]{Zjednodušený Bellman-Fordův algoritmus}{
+	V cyklu pro $i = 1, \dots, n$ vezmeme každou hranu a podíváme, jestli
+	její cílový vrchol nemá větší hodnotu než počáteční zvývšený o váhu cesty, pokud ano
+	vložíme novou hodnotu do $v$ a nastavíme mu jako předka vrchol $u$.
+}
+
 \end{center}
 \end{document}
