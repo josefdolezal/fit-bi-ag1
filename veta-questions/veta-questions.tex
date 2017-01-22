@@ -615,14 +615,14 @@
 	Vsupní posloupnost $n$ prvků rozdělíme na $\floor{\frac{n}{2}}$ a $\ceil{\frac{n}{2}}$
 	prvků a na obě poloviny zavoláme rekurzivně stejný algoritmus. Rekurze se zastavuje
 	u jednoprvkové posloupnosti, která je seřazená, Při návratu z rekurze se seřazené
-	posloupnosti slévají do jedné. Časová i paměťová složitost \Theta(n).
+	posloupnosti slévají do jedné. Časová i paměťová složitost $\Theta(n)$.
 }
 
 \card[$x$ a $y$]{Rychlé násobení čísel}{
 	Spočívá v rozdělení čísel $x$ a $y$ na $x=a10^{\frac{n}{2}} + b$, $x=c10^{\frac{n}{2}} + d$.\\
-	V prvním kroku lze vyjádřit: $xy = ac10^n + (ad + bc)10^{\frac{n}{2}} + bd$ s \Theta(n).\\
+	V prvním kroku lze vyjádřit: $xy = ac10^n + (ad + bc)10^{\frac{n}{2}} + bd$ s $\Theta(n)$.\\
 	V druhém kroku lze rozepsat $(ad + bc) = ((a+b)(c+d) - ac - bd)$ a dospět k\\
-	$xy = ac10^n + ((a+b)(c+d) - ac - bd)10^{\frac{n}{2}} + bd$ se složitostí \Theta($n^{\log 3}$).
+	$xy = ac10^n + ((a+b)(c+d) - ac - bd)10^{\frac{n}{2}} + bd$\\ se složitostí $\Theta(n^{\log 3})$.
 }
 
 \card[k-tý nejmenší prvek]{QuickSelect}{
@@ -643,12 +643,12 @@
 
 \card[v porovnávacím modelu]{Dolní mez složitosti vyhledávání}{
 	Každý deterministický algoritmus v porovnávacím modelu, který nalezne prvek v
-	$n$-prvkové seřazené posloupnsti, pužije nejméně \Omega(\log n) porovnání.
+	$n$-prvkové seřazené posloupnsti, pužije nejméně $O(\log n)$ porovnání.
 }
 
 \card[v porovnávacím modelu]{Dolní mez složitosti řazení}{
 	Každý deterministický algoritmus v porovnávacím modelu, který seřadí $n$-prvkovou
-	posloupnost použije alespoň \Omega(n \log n) porovnání.
+	posloupnost použije alespoň $O(n \log n)$ porovnání.
 }
 
 \card{CountingSort}{
@@ -662,7 +662,7 @@
 	Používá se k řazení $n$ $k$-tic z množiny $\{1, \dots, r\}^k$.\\
 	Algoritmus řadí pomocí algoritmu \textit{CountingSort} podle $i$-té souřadnice
 	zleva (vezme $i$-tou souřadnici všech $k$-tic a podle ní odzadu řadí).\\
-	Paměťová složitost \Theta($k \cdot (n+r)$), časová složitost \Theta(kn+r).
+	Paměťová složitost $\Theta(k \cdot (n+r))$, časová složitost $\Theta(kn+r)$.
 }
 
 \card{Nejdelší rostoucí podposloupnost}{
@@ -685,7 +685,8 @@
 
 \card{Editační vzdálenost řetězců}{
 	\textbf{Editační operace} na řetězci je \textit{vložení}, \textit{smazání} nebo
-	\textit{změna} jednoho znaku. \textbf{Editační vzdálenost} řetězců $x=x_1, \dots, x_n$
+	\textit{změna} jednoho znaku.
+	\\\textbf{Editační vzdálenost} řetězců $x=x_1, \dots, x_n$
 	a řetězců $y=y_1, \dots, y_m$ zn. $L(x, y)$ je nejmenší počet editačních operací
 	potřebných k tomu, abychom z prvního řetězce vytvořili druhý.
 }
@@ -696,20 +697,22 @@
 	následně provedu $EditRec(i,j)$:
 	\begin{itemize}
 		\item Pokud $i > n$ vracím $m-j+1$, pokud $j > m$ vracím $n-i+1$
-		\item $\el_{z} = EditRec(i+1, j+1)$
-		\item Pokud $x_i \neq y_j$: $\el_z = \el_z + 1$.
-		\item $\el_s = EditRec(i+1, j)$, $\el_v = EditRec(i, j+1)$.
-		\item Vrať $\min{\el_z, \el_s, \el_v}$.
+		\item $\ell_{z} = EditRec(i+1, j+1)$
+		\item Pokud $x_i \neq y_j$: $\ell_z = \ell_z + 1$.
+		\item $\ell_s = EditRec(i+1, j)$, $\ell_v = EditRec(i, j+1)$.
+		\item Vrať $min\{\ell_z, \ell_s, \ell_v\}$.
 	\end{itemize}
+	\normalsize
 }
 
 \card[ohodnoceného grafu]{Minimální kostra}{
-	Existuje $\graph$ souvislý neorientovaný graf a $w: E \to \R$ je \textbf{váhová funkce},
+	Existuje $\graph$ souvislý neorientovaný graf a $w: E \to \mathbb{R}$ je \textbf{váhová funkce},
 	která přiřazuje hranám čísla - váhy.\\
 	Minimální kostra je taková, která má mezi všemi kostrami minimální váhu.
 }
 
 \card[hledání minimální kostry]{Jarníkův algoritmus}{
+	\small
 	\begin{itemize}
 		\item Začíná se se stromem, který jeden vrchol a žádnou hranu.
 		\item V dalším kroku se vybere incidentní hrana s tímto vrcholem s nejmenší váhou.
@@ -717,6 +720,7 @@
 		Tento postup se opakuje dokud v původním grafu jsou vrcholy.
 	\end{itemize}
 	Časová složitost $O(nm)$, paměťová $O(n+m)$, kde $n=|V|$ a $m=|E|$.
+	\normalsize
 }
 
 \card{Elementární řez grafu}{
@@ -781,33 +785,37 @@
 }
 
 \card[nejkratší cesta v ohodnoceném grafu]{Bellman-Fordův algoritmus}{
+    \footnotesize
 	Funguje na podobném principu jako Dijkstrův algoritmus. Místo vybírání
 	prvku s nejnižším bere vrchol z čela fronty pro jeho následníky provádí:
 	\begin{itemize}
 		\item Pokud $h(w) > h(v) + l(v, w)$:
 		\begin{itemize}
 			\item $h(w) = h(v) + l(v, w)$
-			\item Pokud stav($w$) \neq otevřený, přidej $w$ do fronty
+			\item Pokud stav($w$) $\neq$ otevřený, přidej $w$ do fronty
 			\item stav($w$) nastav na otevřený
 			\item uzavři $v$
 		\end{itemize}
 	\end{itemize}
 	Oproti Dijkstrovi také znovu otevírá již uzavřené uzly.
+	\normalsize
 }
 
 \card[nejkratší cesta v ohodnoceném grafu]{Bellman-Fordův algoritmus}{
+    \footnotesize
 	Funguje na podobném principu jako Dijkstrův algoritmus. Místo vybírání
 	prvku s nejnižším bere vrchol z čela fronty pro jeho následníky provádí:
 	\begin{itemize}
 		\item Pokud $h(w) > h(v) + l(v, w)$:
 		\begin{itemize}
 			\item $h(w) = h(v) + l(v, w)$
-			\item Pokud stav($w$) \neq otevřený, přidej $w$ do fronty
+			\item Pokud stav($w$) $\neq$ otevřený, přidej $w$ do fronty
 			\item stav($w$) nastav na otevřený
 			\item uzavři $v$
 		\end{itemize}
 	\end{itemize}
 	Oproti Dijkstrovi také znovu otevírá již uzavřené uzly. Složitost $O(nm)$
+	\normalsize
 }
 
 \card[nejkratší cesta v ohodnoceném grafu]{Zjednodušený Bellman-Fordův algoritmus}{
