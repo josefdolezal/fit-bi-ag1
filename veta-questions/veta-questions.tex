@@ -661,7 +661,46 @@
 \card{LexCountingSort}{
 	Používá se k řazení $n$ $k$-tic z množiny $\{1, \dots, r\}^k$.\\
 	Algoritmus řadí pomocí algoritmu \textit{CountingSort} podle $i$-té souřadnice
-	zleva (vezme $i$-tou souřadnici všech $k$-tic a podle ní odzadu řadí).
+	zleva (vezme $i$-tou souřadnici všech $k$-tic a podle ní odzadu řadí).\\
+	Paměťová složitost \Theta($k \cdot (n+r)$), časová složitost \Theta(kn+r).
+}
+
+\card{Nejdelší rostoucí podposloupnost}{
+	Pole se prochází odzadu. Pro každý prvek se udržuje délka nejdelší rostoucí posloupnosti.
+	Pro každý prvek $v$ se nejprve uloží hodnota 1 a následně se prochází všechny prvky $w$ za ním.
+	Pokud je prvek $h(v) < h(w) + 1$ pak $h(v) = h(w) + 1$. Na konci pro každé číslo
+	máme nalezenu nejdelší rostoucí podposloupnost.
+}
+
+\card{Triangulace kovexního mnohoúhelníku}{
+	\small
+	Rozdělení mnohoúhelníku na trojúhelníky pomocí diagonál (hrana $a_i a_j$ kde
+	$a_i$ a $a_j$) jsou nesousední vrcholy. Každá triangulace má $n-3$ diagonál.
+	Minimální triangulace je nejmenší ze součtů délek diagonál.\\
+	Pro každý vrchol $j = \{1, \dots, n\}$ číslo $M[i, j]$ vyjadřuje MTM $i$ vrcholů
+	za sebou počínaje $j$. Definujeme $M[2,j] = 0$ a $M[3, j] = |a_ja_{j+2}|$\\
+	Následně pak platí: $M[i,j] = min_{1\leq k\leq i-2}(M[k+1, j] + M[i-k, j+k]) + ||a_ja_{j+i-1}||$.
+	MTM je $M[n, 1] - ||a_1a_n||$.
+}
+
+\card{Editační vzdálenost řetězců}{
+	\textbf{Editační operace} na řetězci je \textit{vložení}, \textit{smazání} nebo
+	\textit{změna} jednoho znaku. \textbf{Editační vzdálenost} řetězců $x=x_1, \dots, x_n$
+	a řetězců $y=y_1, \dots, y_m$ zn. $L(x, y)$ je nejmenší počet editačních operací
+	potřebných k tomu, abychom z prvního řetězce vytvořili druhý.
+}
+
+\card[algoritmus]{Editační vzdálenost řetězců}{
+	\small
+	Rekurzivní algoritmus vzdálenosti suffixů (tedy měří se od konce). V každé iteraci
+	následně provedu $EditRec(i,j)$:
+	\begin{itemize}
+		\item Pokud $i > n$ vracím $m-j+1$, pokud $j > m$ vracím $n-i+1$
+		\item $\el_{z} = EditRec(i+1, j+1)$
+		\item Pokud $x_i \neq y_j$: $\el_z = \el_z + 1$.
+		\item $\el_s = EditRec(i+1, j)$, $\el_v = EditRec(i, j+1)$.
+		\item Vrať $\min{\el_z, \el_s, \el_v}$.
+	\end{itemize}
 }
 
 \end{center}
