@@ -1,4 +1,4 @@
-# BI-AG1: Algoritmy a grafy
+# BI-AG1: Algoritmy a grafy [![Build Status](https://travis-ci.org/josefdolezal/fit-bi-ag1.svg?branch=master)](https://travis-ci.org/josefdolezal/fit-bi-ag1)
 
 Repozitář věnovaný předmětu BI-AG1, vyučovaný na FIT ČVUT (@FIT_CTU).
 Seznam materiálů k ostatním předmětům je v [samostatném repozitáři](https://github.com/josefdolezal/fit-cvut).
