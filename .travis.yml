@@ -1,0 +1,21 @@
+language: python
+dist: trusty
+before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get install -y --no-install-recommends texlive-fonts-recommended texlive-latex-extra
+    texlive-fonts-extra dvipng texlive-latex-recommended texlive-lang-czechslovak texlive-generic-extra
+    lmodern latexmk latex-xcolor
+install:
+  - pip install pygments
+script: make build
+deploy:
+  provider: releases
+  api_key:
+    secure: CV/ClY97vpMG6xFrWab7WzT78EtfC5bhaYf1SGOwpHSSGa3Td9fOMGmcGPJOnNfaqy2oRPN/v73xzYx6sNgraEqmUQ23e9e8/D5SEnrKfCJ1xhadf0UEzhb6E5oKAT5ixNZKBgNnd5ECpSqlhCwkngF+1uDNW3nJ8Rd/Se1f+hxO+CdbYFe4djfDZwnOomdPLXd8Yw/Fqz/FfJKU3uBkwPYcbPHB0DXO9XD9h4hhP90YaNT3uOcYSwqQOyMRQMQY0CtpQYkcJTB4njGlocINKcDuwVshuz40npNN4kosLl3lG72RwbZSVW4pt1b76R/NaZAcHsnp2ArD/vgWqWf0CVFcD+rH7xpmPGoff3k+qonlAfmuS2a5bdGGC7bc9G+Cubqf1XtNuQzD7G6oUJtLWCQwFAwAIEuNW2vmVOc0qlKat3MMFwAcTBQvKH8Leo0W4p8wEp+Z0SqibflJsKpF5rL8ZUQanJ/q+ZbyNDqilsZlNfymT9y1hoK9CT/ufx8mpxGXlizioeV6QpO75b4R1Hl3zqVtCCv68jBfHp3uUThQ0psw94KneUQYyLu8Z/pQuzK6XCvA783CiCP3Yuhn4tewsU6X/QdamR/nk4fGqWqquwzCLegxTvLAuwlDEkJHjVi0OVkyssQkXTxKmR+9c4jS5sivTx5EOnLhFRTahxg=
+  file:
+    - notes.pdf
+    - veta-questions.pdf
+  skip_cleanup: true
+  on:
+    repo: josefdolezal/fit-bi-ag1
+    tags: true
