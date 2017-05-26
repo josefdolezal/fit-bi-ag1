@@ -1,0 +1,58 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[IL2]{fontenc}
+\usepackage{a4wide}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{graphicx}
+
+% Macros
+\newcommand{\image}[1] {
+\begin{figure}[!h]
+  \includegraphics{#1}
+\end{figure}}
+% /Macros
+
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+
+\title{BI-AG1 - Algoritmy a grafy 2016/17}
+\author{Josef Dolezal}
+
+\begin{document}
+
+\tableofcontents
+
+\newpage
+
+\input{notes/01-base-terms}
+
+\newpage
+
+\input{notes/02-graphs}
+
+\input{notes/03-trees}
+
+\input{notes/04-sorting-algorithms}
+
+\input{notes/05-heap}
+
+\input{notes/06-amortized-complexity}
+
+\input{notes/07-binomial-heap}
+
+\input{notes/08-binary-search-tree}
+
+\input{notes/09-self-balancing-bst}
+
+\input{notes/10-dictionaries-tables-hash}
+
+\input{notes/11-recusion-divide-and-conquer}
+
+\input{notes/12-dynamic-programming}
+
+\input{notes/13-minimal-spanning-tree}
+
+\input{notes/99-algorithm-use-cases}
+
+\end{document}

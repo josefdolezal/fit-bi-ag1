@@ -3,24 +3,24 @@
   \begin{description}
     \item[Binomiální strom řádu $k$] Uspořádaný zakořeněný strom, pro který platí:
     \begin{itemize}
-      \item B\textsubscript{0} je tvořen pouze kořenem.
-      \item B\textsubscript{k} lze získat pomocí stromu B\textsubscript{k-1}, kterému připojíme jako nejpravějšího syna strom B\textsubscript{k}.
+      \item $B_0$ je tvořen pouze kořenem.
+      \item $B_k$ lze získat pomocí stromu $B_{k-1}$, kterému připojíme jako nejpravějšího syna strom $B_k$.
     \end{itemize}
     \item[Binomiální halda] Složení souboru binomiálních stromů. Každý strom dodržuje haldové uspořádání. V uspořádání se žádný strom se stejným řádem nevyskytuje dvakrát. Soubor je uspořádán vzestupně.
   \end{description}
 
   \subsection{Vlastnosti binomiálních stromů}
     \begin{itemize}
-      \item Počet hladin stromu B\textsubscript{k} je $k+1$.
-      \item Stupeň kořene stromu B\textsubscript{k} je $k$.
-      \item Počet vrcholů stromu B\textsubscript{k} je $2^k$.
+      \item Počet hladin stromu $B_k$ je $k+1$.
+      \item Stupeň kořene stromu $B_k$ je $k$.
+      \item Počet vrcholů stromu $B_k$ je $2^k$.
       \item Binomiální strom s $n$ vrcholy má hloubku $log \, n$ a počet synů kořene také $log \, n$.
-      \item Binomiální strom má v $i$-té hladině \binom{k}{i} vrcholů.
+      \item Binomiální strom má v $i$-té hladině $\binom{k}{i}$ vrcholů.
     \end{itemize}
 
     \subsection{Vlastnosti binomiální haldy}
       \begin{itemize}
-        \item Binomiální strom B\textsubscript{k} se v souborů stromů vyskytuje tehdy, je li v dvojkovém zápisu čísla $n$ nastavený $k$-tý nejnižší bit na 1.
+        \item Binomiální strom $B_k$ se v souborů stromů vyskytuje tehdy, je li v dvojkovém zápisu čísla $n$ nastavený $k$-tý nejnižší bit na 1.
         \item Halda se skládá z $log \, n$ binomiálních stromů.
       \end{itemize}
 

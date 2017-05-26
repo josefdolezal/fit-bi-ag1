@@ -9,10 +9,12 @@ Seznam materiálů k ostatním předmětům je v [samostatném repozitáři](htt
 
 ## Studijní materiály
 Při přípravě na závěrečný semestrální test jsem vytvořil zápisky z prezentací.
-Zápisky jsou napsané v LaTeXu a zkompilované do [PDF](notes/notes.pdf).
+Zápisky jsou napsané v LaTeXu a zkompilované do PDF.
 
 Pro ústní část zkoušky (veta otázka) jsem vypracoval jednotlivá témata jako
-testovací kartičky v [PDF](veta-questions/veta-questions.pdf).
+testovací kartičky v PDF.
+
+Obě PDF jsou zkompilované na záložce [Releases](https://github.com/josefdolezal/fit-bi-ag1/releases).
 
 ## Domácí úlohy
 * [Fakultní labyrint](assignment-one)
